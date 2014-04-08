@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<title>HomeSlice</title>
+<meta name="viewport" content="width=device-width">
+<meta name="viewport" content="initial-scale=1, maximum-scale=1">
+<meta name="apple-mobile-web-app-capable" content="yes" /> 
+<link rel="stylesheet" type="text/css" href="main.css" />
+<link rel="stylesheet" type="text/css" media="all" href="equity-font.css" />
+<script src="javascript/jquery.js"></script>
+<script type="text/javascript">
+$.extend({
+    getUrlVars : function() {
+        var vars = [], hash;
+        var hashes = window.location.href.slice(
+                window.location.href.indexOf('?') + 1).split('&');
+        for ( var i = 0; i < hashes.length; i++) {
+            hash = hashes[i].split('=');
+            vars.push(hash[0]);
+            vars[hash[0]] = hash[1];
+        }
+        return vars;
+    },
+    getUrlVar : function(name) {
+        return $.getUrlVars()[name];
+    }
+});
+
+$(document).ready(function() {
+    $('#content').load('views/' + $.getUrlVar('page') + '.html');
+	if($.getUrlVar('page') != 'landing') {
+		$("#controls").show();
+	}
+});
+</script>
+<script type="text/javascript">
+// Insert optional override object before the function
+
+createGridder = function() {
+  document.body.appendChild(
+    document.createElement('script'))
+    .src='javascript/gridder.js';
+}
+
+var gOverride = {
+  urlBase: 'http://gridder.andreehansson.se/releases/latest/',
+  gColor: '#EEEEEE',
+  gColumns: 16,
+  gOpacity: 0.35,
+  gWidth: 10,
+  pColor: '#C0C0C0',
+  pHeight: 15,
+  pOffset: 0,
+  pOpacity: 0.55,
+  center: true,
+  gEnabled: true,
+  pEnabled: true,
+  setupEnabled: true,
+  fixFlash: true,
+  size: 960
+};
+</script>
+</head>
+
+<body onload="//createGridder()">
+
+	<header>
+		<div class="center">
+			<a id="logo" href="#" title="HomeSlice"><img src="images/logo_small.png" alt="HomeSlice" /></a>
+			
+			<div id="controls">
+				<a href="#" title="Profile" class="profile_link">
+					<div id="user_small_thumb_container">
+						<div style="background: url(images/user_small.jpg) no-repeat center center"></div>
+					</div>
+					<p class="username">Emily</p>
+				</a>
+			</div>
+		</div>
+	</header>
+	
+	<div id="content"></div>	
+	
+	<footer>All rights reserved</footer>
+
+</body>
+
+</html>
