@@ -6,7 +6,7 @@
 <meta name="viewport" content="width=device-width">
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
 <meta name="apple-mobile-web-app-capable" content="yes" /> 
-<link rel="stylesheet" type="text/css" href="landing.css" />
+<link rel="stylesheet" type="text/css" href="main.css" />
 <link rel="stylesheet" type="text/css" media="all" href="equity-font.css" />
 <script src="javascript/jquery.js"></script>
 <script type="text/javascript">
@@ -28,7 +28,7 @@ $.extend({
 });
 
 $(document).ready(function() {
-    $('#content').load('views/landing.html');
+    $('#content').load('views/' + $.getUrlVar('page') + '.html');
 });
 </script>
 <script type="text/javascript">
@@ -61,16 +61,30 @@ var gOverride = {
 </head>
 
 <body onload="//createGridder()">
+	
+	<section id="container">
 
-	<header>
-		<div class="center">
+		<section id="main_sidebar">
 			<a id="logo" href="#" title="HomeSlice"><img src="images/logo_small.png" alt="HomeSlice" /></a>
-		</div>
-	</header>
+		</section>
 	
-	<div id="content"></div>	
+		<section id="main_content">
+			<div id="controls">
+				<a href="#" title="Profile" class="profile_link">
+					<div id="user_small_thumb_container">
+						<div style="background: url(images/user_small.jpg) no-repeat center center"></div>
+					</div>
+					<p class="username">Emily</p>
+				</a>
+			</div>
+			<div id="content">
+				
+			</div>	
+		</section>
 	
-	<footer>All rights reserved</footer>
+		<footer>All rights reserved</footer>
+	
+	</section>
 
 </body>
 
