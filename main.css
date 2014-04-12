@@ -34,7 +34,7 @@ header {
 }
 
 .center {
-	width: 940px;
+	width: 980px;
 	margin: 0px auto;
 	height: 100%;
 }
@@ -51,7 +51,7 @@ header {
 #header_text {
 	background: url(images/header_text.png) center center no-repeat;
 	margin: 0 auto;
-	width: 940px;
+	width: 980px;
 	height: 190px;
 	margin-top: -95px;
 	margin-left: -470px;
@@ -74,7 +74,7 @@ header {
 
 #container {
 	margin: 30px auto;
-	width: 940px;
+	width: 980px;
 	border-bottom: 1px solid #bcbcbe;
 	border-right: 1px solid #bcbcbe;
 	overflow: hidden; 
@@ -135,7 +135,7 @@ header {
 #main_sidebar {
 	background: #313440;
 	min-height: 500px;
-	width: 220px;
+	width: 240px;
 	float: left;
 	border-radius: 2px 0px 0px 0px; 
 	-moz-border-radius: 2px 0px 0px 0px; 
@@ -147,8 +147,8 @@ header {
 
 #main_content {
 	background: #f7f7f7;
-	width: 720px;
-	margin-left: 220px;
+	width: 760px;
+	margin-left: 240px;
 	min-height: 500px;
 	border-radius: 0px 2px 0px 0px; 
 	-moz-border-radius: 0px 2px 0px 0px; 
@@ -183,12 +183,13 @@ ul, ul li {
 }
 
 #expats_list {
-	padding: 20px;
+	padding-top: 20px;
+	padding-left: 20px;
 	overflow: auto;
 }
 
 #expats_list li {
-	width: 175px;
+	width: 179px;
 	background: #fff;
 	-moz-border-radius: 2px;
 	-webkit-border-radius: 2px;
@@ -196,9 +197,10 @@ ul, ul li {
 	text-align: center;
 	padding: 20px;
 	float: left;
-	margin: 5px;
+	margin-right: 20px;
 	border-bottom: 1px solid #ddd;
 	border-right: 1px solid #ddd;
+	margin-bottom: 20px;
 }
 
 #expats_list .user_image {
