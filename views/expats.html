@@ -19,10 +19,7 @@ String.prototype.capitalize = function() {
 function getRandomUser() {
 	if($("#expats_list li").length == 30) return;
 	
-	$.ajax({
-	  url: 'http://api.randomuser.me/',
-	  dataType: 'json',
-	  success: function(data){
+	$.getJSON('http://api.randomuser.me/?', function(data){
 	    console.log(data);
 	
 		if($("img[src$='" + data.results[0].user.picture + "']").length > 0) {
@@ -41,7 +38,6 @@ function getRandomUser() {
 		$("#expats_list").append(html);
 		
 		getRandomUser();
-	  }
 	});
 }
 
