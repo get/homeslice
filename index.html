@@ -6,6 +6,7 @@
 <meta name="viewport" content="width=device-width">
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
 <meta name="apple-mobile-web-app-capable" content="yes" /> 
+<link href='http://fonts.googleapis.com/css?family=Snippet|Varela+Round|Signika:400,300' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" type="text/css" href="main.css" />
 <link rel="stylesheet" type="text/css" media="all" href="equity-font.css" />
 <script src="javascript/jquery.js"></script>
@@ -29,6 +30,7 @@ $.extend({
 
 $(document).ready(function() {
     $('#content').load('views/' + $.getUrlVar('page') + '.html');
+	$('.'+$.getUrlVar('page')+'_page_link').addClass("selected");
 });
 </script>
 <script type="text/javascript">
@@ -65,7 +67,14 @@ var gOverride = {
 	<section id="container">
 
 		<section id="main_sidebar">
-			<a id="logo" href="#" title="HomeSlice"><img src="images/logo_small.png" alt="HomeSlice" /></a>
+			<a id="logo" href="#" title="HomeSlice"><img src="images/logo_small_no_flag.png" alt="HomeSlice" /></a>
+			
+			<ul id="main_navigation">
+				<li><a href="?page=matches" title="Matches" class="matches_page_link">Matches</a></li>
+				<li><a href="?page=expats" title="Expats" class="expats_page_link">Expats</a></li>
+				<li><a href="?page=homies" title="Homies" class="homies_page_link">Homies</a></li>
+				<li><a href="?page=help" title="Help" class="help_page_link">Help</a></li>
+			</ul>
 		</section>
 	
 		<section id="main_content">
@@ -76,13 +85,17 @@ var gOverride = {
 					</div>
 					<p class="username">Emily</p>
 				</a>
+				
+				<a href="#" title="Messages" class="messages_link">
+					<img src="images/envelope_white.png" alt="envelope" width="35" style="opacity: .1" />
+				</a>
 			</div>
 			<div id="content">
 				
 			</div>	
 		</section>
 	
-		<footer>All rights reserved</footer>
+		<footer></footer>
 	
 	</section>
 

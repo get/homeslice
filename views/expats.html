@@ -1,0 +1,46 @@
+<div id="expats">
+	<div id="panorama_c">
+		<div id="panorama">
+			<h1>Meet other Americans in Singapore</h1>
+		</div>
+	</div>
+
+	<ul id="expats_list">
+	</ul>
+</div>
+
+<script>
+String.prototype.capitalize = function() {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+}
+
+function getRandomUser() {
+	if($("#expats_list li").length == 30) return;
+	
+	$.ajax({
+	  url: 'http://api.randomuser.me/',
+	  dataType: 'json',
+	  success: function(data){
+	    console.log(data);
+	
+		if($("img[src$='" + data.results[0].user.picture + "']").length > 0) {
+			getRandomUser();
+			return;
+		}
+
+		var html = $("<li></li>");
+	
+		html.append("<img class='user_image' src='" + data.results[0].user.picture + "' alt='user' />");
+		html.append("<p class='user_name'>" + data.results[0].user.name.first.capitalize() + " " +  data.results[0].user.name.last[0].capitalize() + ".</p>");
+		html.append("<p class='location'>Singapore, Singapore</p>");
+
+
+		$("#expats_list").append(html);
+		
+		getRandomUser();
+	  }
+	});
+}
+
+getRandomUser();
+</script>

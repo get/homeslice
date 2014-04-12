@@ -5,8 +5,9 @@
 
 body {
 	background: #dddde0;
-	font-family: "equity-text", georgia, serif;
-	font-size: 10pt;
+	font-size: 8pt;
+	
+	font-family: 'Varela Round', "gotham-medium", sans-serif;
 }
 
 footer {
@@ -19,9 +20,17 @@ header {
 }
 
 #logo {
-	top: 15px;
-	display: inline-block;
+	display: block;
 	position: relative;
+	background: #3a4ca8;
+	backgroun: #313440;
+	padding: 10px 0px;
+	padding-left: 20px;
+	overflow: hidden;
+	border-radius: 2px 0px 0px 0px; 
+	-moz-border-radius: 2px 0px 0px 0px; 
+	-webkit-border-radius: 2px 0px 0px 0px;
+	border-bottom: 2px solid #32418f;
 }
 
 .center {
@@ -68,23 +77,32 @@ header {
 	width: 940px;
 	border-bottom: 1px solid #bcbcbe;
 	border-right: 1px solid #bcbcbe;
+	overflow: hidden; 
 }
 
 #controls {
-	float: right;
-	height: 100%;
+	height: 67px;
 	overflow: auto;
 	position: relative;
 	padding: 0px 10px;
-	margin-right: 20px;
+	padding-right: 30px;
+	background: #f7f7f7;
+	border-bottom: 2px solid #e7e7e7;
+}
+
+#controls a {
+	float: right;
+}
+
+.messages_link {
+	margin-top: 15px;
+	margin-right: 15px;
 }
 
 #controls .profile_link {
-	font-family: gotham, sans-serif;
 	text-decoration: none;
-	color: #494a51;
-	font-size: 8pt;
-	text-shadow: 1px 1px #fff;
+	color: #888794;
+	text-transform: uppercase;
 }
 
 #user_small_thumb_container {
@@ -96,7 +114,7 @@ header {
 	border-radius: 80px;
 	padding: 0px;
 	float: left;
-	margin-top: 17px;
+	margin-top: 14px;
 }
 
 #user_small_thumb_container div {
@@ -108,20 +126,23 @@ header {
 }
 
 #controls .username {
-	line-height: 75px;
+	line-height: 67px;
 	left: 10px;
 	float: left;
 	position: relative;
 }
 
 #main_sidebar {
-	background: #252730;
+	background: #313440;
 	min-height: 500px;
 	width: 220px;
 	float: left;
 	border-radius: 2px 0px 0px 0px; 
 	-moz-border-radius: 2px 0px 0px 0px; 
 	-webkit-border-radius: 2px 0px 0px 0px;
+	height: 100%;
+	margin-bottom: -10000px;
+	padding-bottom: 10000px;
 }
 
 #main_content {
@@ -132,4 +153,100 @@ header {
 	border-radius: 0px 2px 0px 0px; 
 	-moz-border-radius: 0px 2px 0px 0px; 
 	-webkit-border-radius: 0px 2px 0px 0px;
+}
+
+ul, ul li {
+	list-style: none outside none;
+}
+
+#main_navigation li {
+	margin-bottom: 5px;
+}
+
+#main_navigation li a {
+	color: #e5e8f8;
+	text-decoration: none;
+	text-transform: uppercase;
+	line-height: 60px;
+	display: block;
+	font-size: 8pt;
+	letter-spacing: 0.1em;
+	font-weight: 100;
+	padding-left: 25px;
+}
+
+#main_navigation li a.selected {
+	background: #252730;
+}
+
+#expats {
+}
+
+#expats_list {
+	padding: 20px;
+	overflow: auto;
+}
+
+#expats_list li {
+	width: 175px;
+	background: #fff;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+	text-align: center;
+	padding: 20px;
+	float: left;
+	margin: 5px;
+	border-bottom: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+}
+
+#expats_list .user_image {
+	width: 120px;
+	height: 120px;
+	-moz-border-radius: 120px;
+	-webkit-border-radius: 120px;
+	border-radius: 120px;
+	margin: 0px auto;
+	display: block;
+}
+
+#expats_list .user_name {
+	font-size: 14pt;
+	font-family: "Signika", sans-serif;
+	margin: 15px 0px 5px;
+}
+
+#expats h1 {
+	font-size: 25pt;
+	font-family: "Signika", sans-serif;
+	font-weight: 100;
+	color: #fff;
+	line-height: 125px;
+	margin-left: 30px;
+	position: relative;
+	z-index: 3;
+}
+
+#expats #panorama:after {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	background: #000;
+	z-index: 2;
+	content: " ";
+	top: 0;
+	opacity: .4;
+}
+
+#expats #panorama {
+	width: 100%;
+	min-width: 100%;
+	height: 125px;
+	margin: 0;
+	padding: 0;
+}
+
+#panorama_c {
+	background: black;
 }
