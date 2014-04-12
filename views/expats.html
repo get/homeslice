@@ -4,6 +4,8 @@
 			<h1>Meet other Americans in Singapore</h1>
 		</div>
 	</div>
+	
+	<p class="info">In order to best match you with others in your area, we could use some input from you. Check the users whose profiles you find interesting, and we'll try our best to match you with them.</p>
 
 	<ul id="expats_list">
 	</ul>
@@ -33,6 +35,7 @@ function getRandomUser() {
 		html.append("<img class='user_image' src='" + data.results[0].user.picture + "' alt='user' />");
 		html.append("<p class='user_name'>" + data.results[0].user.name.first.capitalize() + " " +  data.results[0].user.name.last[0].capitalize() + ".</p>");
 		html.append("<p class='location'>Singapore, Singapore</p>");
+		html.append("<p class='caption'>Love me pleeeeease!!</p>");
 
 
 		$("#expats_list").append(html);
