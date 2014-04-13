@@ -16,11 +16,13 @@ String.prototype.capitalize = function() {
     return this.charAt(0).toUpperCase() + this.slice(1);
 }
 
+window.results = "";
+
 function getRandomUser() {
 	if($("#expats_list li").length == 30) return;
 	
 	$.getJSON('http://api.randomuser.me/?', function(data){
-	    console.log(data);
+	    window.results += JSON.stringify(data);
 	
 		if($("img[src$='" + data.results[0].user.picture + "']").length > 0) {
 			getRandomUser();
