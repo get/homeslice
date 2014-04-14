@@ -11,6 +11,10 @@ body {
 	font-family: "Varela Round", Tahoma, "Gotham-Book", sans-serif;
 }
 
+b {
+	font-family: Oxygen, Tahoma, "Gotham-Book", sans-serif;
+}
+
 a {
 	color: #3a4ca8;
 }
