@@ -16,32 +16,18 @@ String.prototype.capitalize = function() {
     return this.charAt(0).toUpperCase() + this.slice(1);
 }
 
-window.results = "";
-
-function getRandomUser() {
-	if($("#expats_list li").length == 30) return;
-	
-	$.getJSON('http://api.randomuser.me/?', function(data){
-	    window.results += JSON.stringify(data);
-	
-		if($("img[src$='" + data.results[0].user.picture + "']").length > 0) {
-			getRandomUser();
-			return;
-		}
-
+$.getJSON("users.json", function(data) {
+	for(var i=0; i<data.length; i++) {
+		var user = data[i][0].user;
 		var html = $("<li></li>");
 	
-		html.append("<img class='user_image' src='" + data.results[0].user.picture + "' alt='user' />");
-		html.append("<p class='user_name'>" + data.results[0].user.name.first.capitalize() + " " +  data.results[0].user.name.last[0].capitalize() + ".</p>");
+		html.append("<img class='user_image' src='" + user.picture + "' alt='user' />");
+		html.append("<p class='user_name'>" + user.name.first.capitalize() + " " +  user.name.last[0].capitalize() + ".</p>");
 		html.append("<p class='location'>Singapore, Singapore</p>");
 		html.append("<p class='caption'>Love me pleeeeease!!</p>");
 
 
 		$("#expats_list").append(html);
-		
-		getRandomUser();
-	});
-}
-
-getRandomUser();
+	}
+});
 </script>
