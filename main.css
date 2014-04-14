@@ -6,6 +6,9 @@
 
 body {
 	background: #dddde0;
+}
+
+body, .normal_text {
 	font-size: 8pt;
 	color: #313440;
 	font-family: "Varela Round", Tahoma, "Gotham-Book", sans-serif;
@@ -17,6 +20,11 @@ b {
 
 a {
 	color: #3a4ca8;
+}
+
+h1 { 
+	font-size: 25pt;
+	font-family: "Signika", sans-serif;
 }
 
 footer {

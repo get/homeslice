@@ -1,23 +1,16 @@
-<div id="expats">
-	<div id="panorama_c">
-		<div id="panorama">
-			<h1>Meet other Americans in Singapore</h1>
-		</div>
-	</div>
+<div id="homies">
+	<h1>Homies</h1>
 	
-	<p class="info">In order to best match you with others in your area, we could use some input from you. Check the users whose profiles you find interesting, and we'll try our best to match you with them (<b>we won't let them know</b>).</p>
-
-	<ul id="expats_list">
+	<ul id="homies_list">
 	</ul>
 </div>
-
 <script>
 String.prototype.capitalize = function() {
     return this.charAt(0).toUpperCase() + this.slice(1);
 }
 
 $.getJSON("users.json", function(data) {
-	for(var i=0; i<data.length; i++) {
+	for(var i=0; i<4; i++) {
 		var user = data[i][0].user;
 		var username = user.name.first.capitalize() + " " +  user.name.last[0].capitalize() + ".";
 		var html = $("<li></li>");
@@ -25,12 +18,10 @@ $.getJSON("users.json", function(data) {
 	
 		link.append("<img class='user_image' src='" + user.picture + "' alt='user' />");
 		link.append("<p class='user_name'>" + username + "</p>");
-		link.append("<p class='location'>Singapore, Singapore</p>");
-		link.append("<p class='caption'>Love me pleeeeease!!</p>");
 		
 		html.append(link);
 
-		$("#expats_list").append(html);
+		$("#homies_list").append(html);
 	}
 });
 </script>
