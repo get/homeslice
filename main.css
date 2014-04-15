@@ -36,6 +36,10 @@ header {
 	height: 75px;
 }
 
+button {
+    outline: none;
+}
+
 #logo {
 	display: block;
 	position: relative;
