@@ -1,34 +1,35 @@
 #profile {
+    padding: 20px 0px 0px 20px;
 }
 
 #profile h1 {
-	font-weight: 100;
+	color: #484d5e;
+}
+
+#profile .thumbnail img {
+    width: 100px;
+    height: 100px;
+	-moz-border-radius: 100px;
+	-webkit-border-radius: 100px;
+	border-radius: 100px;
+}
+
+#profile #picture_selector {
+    margin-left: 40px;
+    margin-top: 25px;
+}
+
+#profile #save_profile_button {
+    float: right;
+	background: #59bd41;
 	color: #fff;
-	line-height: 125px;
-	margin-left: 20px;
-	position: relative;
-	z-index: 3;
-}
-
-#profile #panorama:after {
-	position: absolute;
-	width: 100%;
-	height: 100%;
-	background: #000;
-	z-index: 2;
-	content: " ";
-	top: 0;
-	opacity: .4;
-}
-
-#profile #panorama {
-	width: 100%;
-	min-width: 100%;
-	height: 125px;
-	margin: 0;
-	padding: 0;
-}
-
-#panorama_c {
-	background: black;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: 9pt;
+	padding: 10px 20px;
+	-moz-border-radius: 30px;
+	-webkit-border-radius: 30px;
+	border-radius: 30px;
+	border: none;
+    margin-right: 17px;
 }
