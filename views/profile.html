@@ -1,5 +1,7 @@
+<script src="javascript/jquery-ui.js"></script>
 <script src="javascript/image-picker.js"></script>
 <link rel="stylesheet" type="text/css" href="image-picker.css" />
+<link rel="stylesheet" type="text/css" href="jquery-ui.css" />
 
 <div id="profile">
     <button id="save_profile_button">Save</button>
@@ -15,10 +17,46 @@
             <option data-img-src="images/user.jpg" value="5">5</option>
         </select>
     </div>
+    
+    <div id="about_you">
+        <div id="slider_label">
+            <p id="low_label">Not at all</p>
+            <p id="high_label">Totally!</p>    
+        </div>
+        
+        <div class="question_set">
+            <p id="question">Are you a party animal?</p>
+            <span>1</span>
+        </div>
+
+        <div class="question_set">
+            <p id="question">Are you an intellectual?</p>
+            <span>1</span>
+        </div>
+            
+        <div class="question_set">
+            <p id="question">Do you love crude humor?</p>
+            <span>1</span>
+        </div>
+    </div>
 </div>
 
 <script type="text/javascript">
     $(document).ready(function() {
+        // setup image-picker
         $("select").imagepicker();
+        
+        // setup sliders
+        $(".question_set > span").each(function() {
+            var value = parseInt( $(this).text(), 10 );
+            $(this).empty().slider({
+                value: value,
+                orientation: "horizontal",
+                animate: true,
+                min: 1,
+                max: 5,
+                step: 1,
+            });
+        });
     });
 </script>

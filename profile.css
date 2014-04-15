@@ -1,5 +1,6 @@
 #profile {
-    padding: 20px 0px 0px 20px;
+    padding: 20px;
+    overflow: auto;
 }
 
 #profile h1 {
@@ -32,4 +33,41 @@
 	border-radius: 30px;
 	border: none;
     margin-right: 17px;
+}
+
+#profile #about_you {
+    width: 100%;
+    overflow: auto;
+    margin-top: 10px;
+}
+
+#profile .question_set {
+    width: 100%;
+    overflow: auto;
+}
+
+#profile .question_set p {
+    font-size: 12pt;
+    float: left;
+    margin: 20px 0px 20px 100px;
+}
+
+#profile .question_set span {
+    width: 250px; 
+    float: right; 
+    margin: 23px 110px 20px 0px;
+}
+
+#profile #slider_label {
+    width: 290px;
+    float: right;
+    margin: 5px 95px -10px 0px;
+}
+
+#profile #slider_label #low_label {
+    float: left;
+}
+
+#profile #slider_label #high_label {
+    float: right;
 }
