@@ -253,8 +253,7 @@ ul, ul li {
 .caption {
 }
 
-#get_matched_button {
-	background: #59bd41;
+.control_button {
 	color: #fff;
 	text-decoration: none;
 	text-transform: uppercase;
@@ -265,6 +264,20 @@ ul, ul li {
 	border-radius: 30px;
 	border: none;
 	margin: 17px 0px 0px 20px;
+}
+
+#get_matched_button {
+	cursor: pointer;
+	background: #59bd41;
+}
+
+#matches_ready_button {
+	background: #3a4ca8;
+}
+
+#post_hangout_button {
+	cursor: pointer;
+	background: #f16563;
 }
 
 footer {
