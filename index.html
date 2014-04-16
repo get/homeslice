@@ -227,12 +227,16 @@ $(function() {
     
     
     $("#matches_requested_pending_button").click(function(evt) {
-        window.location.href = "index.html?page=matches2";
+        if ($.getUrlVar('page') != "matches2") {
+            window.location.href = "index.html?page=matches2";
+        }
     });
     
     
     $("#matches_ready_button").click(function(evt) {
-        window.location.href = "index.html?page=matches3";
+        if ($.getUrlVar('page') != "matches3") {
+            window.location.href = "index.html?page=matches3";
+        }
     });
     
     
