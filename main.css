@@ -192,11 +192,38 @@ ul, ul li {
 	font-size: 8pt;
 	letter-spacing: 0.1em;
 	font-weight: 100;
-	padding-left: 25px;
+	padding-left: 50px;
+	background-position: 20px 50%;
+	background-repeat: no-repeat;
 }
 
 #main_navigation li a.selected {
-	background: #252730;
+	background-color: #252730;
+	color: #fff;
+}
+
+.expats_page_link {
+	background-image: url(images/globe_blue.png);
+}
+
+.expats_page_link.selected {
+	background-image: url(images/globe.png);
+}
+
+.homies_page_link {
+	background-image: url(images/people_blue.png);
+}
+
+.homies_page_link.selected {
+	background-image: url(images/people.png);
+}
+
+.help_page_link {
+	background-image: url(images/help_blue.png);
+}
+
+.help_page_link.selected {
+	background-image: url(images/help.png);
 }
 
 .info {
