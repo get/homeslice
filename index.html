@@ -40,6 +40,12 @@ $(document).ready(function() {
     $('#content').load('views/' + $.getUrlVar('page').replace("/", "") + '.html');
 	$('.' + $.getUrlVar('page').replace("/", "") + '_page_link').addClass("selected");
 });
+
+$(function() {
+    $("#get_matched_button").click(function(evt) {
+        window.location.href = "index.html?page=matches";
+    });
+});
 </script>
 <script type="text/javascript">
 // Insert optional override object before the function
@@ -117,7 +123,7 @@ var profile = function(index) {
         of: "#controls",
     });
     
-    $("#profile_popup").prop("title", title);
+    $("#profile_popup").data("user", title);
 }
 </script>
 </head>
@@ -150,11 +156,11 @@ var profile = function(index) {
             $("#profile_like_button").click(function(evt) {
                 if ($("#profile_like_button").text() === "☆") {
                     $("#profile_like_button").html("&#9733;");
-                    $.cookie($("#profile_popup").prop("title"), "liked");
+                    $.cookie($("#profile_popup").data("user"), "liked");
                 } 
                 else {
                     $("#profile_like_button").html("&#9734;");
-                    $.removeCookie($("#profile_popup").prop("title"));
+                    $.removeCookie($("#profile_popup").data("user"));
                 }
             });
         </script>

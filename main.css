@@ -23,6 +23,11 @@ a {
 	color: #3a4ca8;
 }
 
+.info a {
+    color: #000;
+    font-weight: 900;
+}
+
 h1 { 
 	font-size: 25pt;
 	font-family: "Signika", sans-serif;
