@@ -36,11 +36,14 @@ header {
 	height: 75px;
 }
 
+button {
+    outline: none;
+}
+
 #logo {
 	display: block;
 	position: relative;
 	background: #3a4ca8;
-	backgroun: #313440;
 	padding: 10px 0px;
 	padding-left: 20px;
 	overflow: hidden;
@@ -238,4 +241,43 @@ footer {
 	-webkit-border-radius: 0px 0px 2px 2px;
 	color: #e5e8f8;
 	padding: 20px 0;
+}
+
+.profile_popup {
+    position: fixed !important;
+}
+
+.profile_popup .ui-dialog-titlebar {
+    border: 0px;
+    background: #f7f7f7 url("images/ui-bg_flat_75_f7f7f7_40x100.png") 50% 50% repeat-x; 
+}
+
+#profile_pic {
+    width: 200px;
+    height: 200px;
+	-moz-border-radius: 200px;
+	-webkit-border-radius: 200px;
+	border-radius: 200px;
+    float: left;
+    margin: 10px;
+}
+
+#profile_name {
+    float: left;
+    margin: 30px 0px 0px 0px;
+}
+
+#profile_from_title {
+    position: relative;
+    top: 98px;
+    left: -97px;
+    float: left;
+}
+
+#profile_from {
+    position: relative;
+    top: 69px;
+    float: left;
+    font-family: "Signika", sans-serif;
+    font-size: 16pt;
 }

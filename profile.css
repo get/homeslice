@@ -1,5 +1,6 @@
 #profile {
-    padding: 20px 0px 0px 20px;
+    padding: 20px;
+    overflow: auto;
 }
 
 #profile h1 {
@@ -31,5 +32,78 @@
 	-webkit-border-radius: 30px;
 	border-radius: 30px;
 	border: none;
-    margin-right: 17px;
+}
+
+#profile #about_you {
+    width: 100%;
+    overflow: auto;
+    margin-top: 10px;
+}
+
+#profile .question_set {
+    width: 100%;
+    overflow: auto;
+}
+
+#profile .question_set p {
+    font-size: 12pt;
+    float: left;
+    margin: 20px 0px 20px 100px;
+}
+
+#profile .question_set span {
+    width: 250px; 
+    float: right; 
+    margin: 23px 110px 20px 0px;
+}
+
+#profile #slider_label {
+    width: 290px;
+    float: right;
+    margin: 5px 95px -10px 0px;
+}
+
+#profile #slider_label #low_label {
+    float: left;
+}
+
+#profile #slider_label #high_label {
+    float: right;
+}
+
+ul.thumbnails.image_picker_selector {
+    overflow: auto;
+    list-style-image: none;
+    list-style-position: outside;
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px; 
+}
+ul.thumbnails.image_picker_selector ul {
+    overflow: auto;
+    list-style-image: none;
+    list-style-position: outside;
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px; 
+}
+ul.thumbnails.image_picker_selector li.group_title {
+    float: none; 
+}
+ul.thumbnails.image_picker_selector li {
+    margin: 0px 12px 12px 0px;
+    float: left; 
+}
+ul.thumbnails.image_picker_selector li .thumbnail {
+    padding: 6px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none; 
+}
+ul.thumbnails.image_picker_selector li .thumbnail img {
+    -webkit-user-drag: none; 
+}
+ul.thumbnails.image_picker_selector li .thumbnail.selected {
+    background: #0088cc;
+    border-radius: 50%;
 }
