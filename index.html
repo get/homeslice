@@ -40,16 +40,6 @@ $(document).ready(function() {
     $('#content').load('views/' + $.getUrlVar('page').replace("/", "").replace("#", "") + '.html');
 	$('.' + $.getUrlVar('page').replace("/", "").replace("#", "") + '_page_link').addClass("selected");
 });
-
-$(function() {
-    $("#get_matched_button").click(function(evt) {
-        var matchProgress = $.cookie("match_progress");
-        if (matchProgress == undefined) {
-            matchProgress = "1";
-        }
-        window.location.href = "index.html?page=matches"+matchProgress;
-    });
-});
 </script>
 <script type="text/javascript">
 // Insert optional override object before the function
@@ -228,6 +218,27 @@ $(function() {
 			$("#controls").append('<button class="control_button" id="get_matched_button">Get Matched</button>');
 			break;
 	}
+});
+    
+$(function() {
+    $("#get_matched_button").click(function(evt) {
+        window.location.href = "index.html?page=matches1";
+    });
+    
+    
+    $("#matches_requested_pending_button").click(function(evt) {
+        window.location.href = "index.html?page=matches2";
+    });
+    
+    
+    $("#matches_ready_button").click(function(evt) {
+        window.location.href = "index.html?page=matches3";
+    });
+    
+    
+    $("#post_hangout_button").click(function(evt) {
+        window.location.href = "index.html?page=matches4";
+    });
 });
 </script>
 
