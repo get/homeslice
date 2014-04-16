@@ -23,17 +23,17 @@
         
         <div class="question_set">
             <p id="question">Are you a party animal?</p>
-            <span>3</span>
+            <span id="slider1">3</span>
         </div>
 
         <div class="question_set">
             <p id="question">Are you an intellectual?</p>
-            <span>3</span>
+            <span id="slider2">3</span>
         </div>
             
         <div class="question_set">
             <p id="question">Do you love crude humor?</p>
-            <span>3</span>
+            <span id="slider3">3</span>
         </div>
     </div>
 </div>
@@ -41,11 +41,19 @@
 <script type="text/javascript">
     $(document).ready(function() {
         // setup image-picker
+        $("select").val($.cookie("profile_pic"));
         $("select").imagepicker();
         
+        var j = 1;
         // setup sliders
         $(".question_set > span").each(function() {
-            var value = parseInt( $(this).text(), 10 );
+            var value = $.cookie("slider" + j);
+            if (value == undefined) {
+                value = "3";
+                $.cookie("slider" + j, "3");
+            }
+            
+            var value = parseInt( value, 10 );
             $(this).empty().slider({
                 value: value,
                 orientation: "horizontal",
@@ -55,6 +63,17 @@
                 step: 1,
                 range: "min",
             });
+            
+            j++;
         });
+    });
+    
+    $("#save_profile_button").click(function(evt) {
+        $.cookie("profile_pic", $("select").val());
+        $.cookie("slider1", ""+$("#slider1").slider("value"));
+        $.cookie("slider2", ""+$("#slider2").slider("value"));
+        $.cookie("slider3", ""+$("#slider3").slider("value"));
+        
+        window.location.href = "index.html?page=expats";
     });
 </script>
