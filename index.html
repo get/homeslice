@@ -7,6 +7,7 @@
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
 <meta name="apple-mobile-web-app-capable" content="yes" /> 
 <link href='http://fonts.googleapis.com/css?family=Varela+Round|Signika:400,300|Oxygen:400,700' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="jquery-ui-1.10.4.custom.css" />
 <link rel="stylesheet" type="text/css" href="main.css" />
 <link rel="stylesheet" type="text/css" href="profile.css" />
 <link rel="stylesheet" type="text/css" href="messages.css" />
@@ -15,6 +16,7 @@
 <link rel="stylesheet" type="text/css" href="homies.css" />
 <link rel="stylesheet" type="text/css" href="help.css" />
 <script src="javascript/jquery.js"></script>
+<script src="javascript/jquery-ui.js"></script>
 <script type="text/javascript">
 $.extend({
     getUrlVars : function() {
@@ -65,10 +67,52 @@ var gOverride = {
   size: 960
 };
 </script>
+<script type="text/javascript">
+$.widget( "ui.dialog", $.ui.dialog, {
+    open: function() {
+        this._super();
+        $( "html" ).css( "overflow", "hidden" );
+        $( "#profile_popup" ).css( "display", "" );
+    },
+    close: function() {
+        this._super();     
+        $( "html" ).css( "overflow", "visible" );
+    }
+});
+    
+var profile = function() {
+    var popupHeight = 600;
+    var offset = $(window).height()/2 - 64.5 - popupHeight/2 - $(window).height()/40 + $(window).scrollTop();
+    var position = "center top+" + offset;
+    $("#profile_popup").dialog({
+        height: popupHeight,
+        width: 600,
+        modal: true,
+        dialogClass: "profile_popup",
+        draggable: false,
+    }).parent()
+    .position({
+        my: "center top+" + offset,
+        of: "#controls",
+    });
+}
+</script>
 </head>
 
 <body onload="//createGridder()">
 	
+    <div id="profile_popup" style="display: none">
+        <div id="profile_info">
+            <img id="profile_pic" src="http://img2.wikia.nocookie.net/__cb20140129024919/rickandmorty/images/b/bb/Rickpic.png" alt="Rick S.">
+            <h1 id="profile_name">Rick S.</h1>
+            <h3 id="profile_from_title">originally<br>from</h3>
+            <h2 id="profile_from">Earth Dimension C-137</h2>
+        </div>
+        <div id="profile_likes">
+            
+        </div>
+    </div>
+    
 	<section id="container">
 
 		<section id="main_sidebar">
@@ -85,7 +129,6 @@ var gOverride = {
 		<section id="main_content">
 			<div id="controls">
 				
-				
 				<a href="?page=profile" title="Profile" class="profile_link">
 					<div id="user_small_thumb_container">
 						<div style="background: url(images/user_small.jpg) no-repeat center center"></div>
@@ -101,7 +144,8 @@ var gOverride = {
 			</div>
 			<div id="content">
 				
-			</div>	
+			</div>
+            
 		</section>
 	
 		<footer>
