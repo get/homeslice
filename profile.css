@@ -108,3 +108,66 @@ ul.thumbnails.image_picker_selector li .thumbnail img {
 ul.thumbnails.image_picker_selector li .thumbnail.selected img {
     border-color: #3a4ca8;
 }
+
+
+.profile_popup {
+    position: fixed !important;
+}
+
+.profile_popup .ui-dialog-titlebar {
+    border: 0px;
+    background: #fff; 
+}
+
+#profile_pic {
+    width: 200px;
+    height: 200px;
+	-moz-border-radius: 200px;
+	-webkit-border-radius: 200px;
+	border-radius: 200px;
+    margin: 10px 20px;
+}
+
+#profile_name {
+    position: absolute;
+    top: 85px;
+    left: 250px;
+}
+
+#profile_from_title {
+    position: absolute;
+    top: 130px;
+    left: 253px;
+}
+
+#profile_from {
+    position: absolute;
+    top: 132px;
+    right: 20px;
+    font-family: "Signika", sans-serif;
+    font-size: 16pt;
+    text-transform: capitalize;
+}
+
+#profile_like_button {
+    position: absolute;
+    background: #59bd41;
+	color: #fff;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: 30pt;
+	padding: 3px 8px;
+	-moz-border-radius: 30px;
+	-webkit-border-radius: 30px;
+	border-radius: 30px;
+	border: none;
+    right: 29px;
+    top: 8px;
+}
+
+#profile_likes {
+}
+
+#likes_header {
+    font-size: 16pt;
+}
