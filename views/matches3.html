@@ -1,0 +1,14 @@
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#match_time").text($.cookie("match_time"));
+        $.cookie("match_progress", "4")
+    });
+</script>
+
+<div id="matches">
+    <h1>Congrats!</h1><br>
+    <h2>We matched you for <span id="match_time"></span> with...</h2>
+    
+    <br><br>
+    <p class="info">Canned response. <a href="index.html?page=matches4">Jump to post-meetup review.</a></p>
+</div>
