@@ -43,7 +43,11 @@ $(document).ready(function() {
 
 $(function() {
     $("#get_matched_button").click(function(evt) {
-        window.location.href = "index.html?page=matches";
+        var matchProgress = $.cookie("match_progress");
+        if (matchProgress == undefined) {
+            matchProgress = "1";
+        }
+        window.location.href = "index.html?page=matches"+matchProgress;
     });
 });
 </script>

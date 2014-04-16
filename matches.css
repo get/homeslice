@@ -41,6 +41,20 @@
 	margin: 0px 0px 0px 0px;
 }
 
+#match_again_button {
+	background: #59bd41;
+	color: #fff;
+	text-decoration: none;
+	font-size: 10pt;
+    text-transform: uppercase;
+	padding: 10px 20px;
+	-moz-border-radius: 30px;
+	-webkit-border-radius: 30px;
+	border-radius: 30px;
+	border: none;
+	margin: 0px 0px 0px 0px;
+}
+
 #match_for_label {
     font-size: 12pt;
     margin-left: 10px;

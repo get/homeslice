@@ -1,0 +1,24 @@
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#match_time").text($.cookie("match_time"));
+        $.cookie("match_progress", "4")
+    });
+    
+    $(function() {
+        $("#match_again_button").click(function(evt) {
+            $.cookie("match_progress", "1");
+            $.removeCookie("match_time");
+            window.location.href = "index.html?page=matches1";
+        });
+    });
+</script>
+
+<div id="matches">
+    <h1>Hope you had a blast!</h1><br>
+    <h2>Let us know how it went:</h2>
+    
+    <br><br>
+    <p class="info">Add them to your homies!<br><br>If the connection is mutual, you'll be able to message them from your <a href="?page=homies">homies page</a>.</p>
+    
+    <button id="match_again_button">Match me again</button>
+</div>
