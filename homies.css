@@ -2,9 +2,14 @@
 	padding: 20px 0px 0px 20px;
 }
 
+#homies .info {
+	margin: 0px 20px 20px 0px;
+}
+
 #homies h1 {
 	color: #252730;
 	margin-bottom: 20px;
+	line-height: 1em;
 }
 
 #homies_list {
@@ -23,12 +28,15 @@
 	padding: 20px;
 	overflow: auto;
 	margin-right: 20px;
+	overflow: hidden;
+	position: relative;
 }
 
 #homies_list .user_name {
 	font-size: 12pt;
 	font-family: "Signika", sans-serif;
-	margin: 5px 0px 0px 10px;
+	line-height: 60px;
+	margin-left: 70px;
 }
 
 #homies_list .user_image {
@@ -39,4 +47,14 @@
 	border-radius: 60px;
 	display: block;
 	float: left;
+}
+
+.triangle-topright { 
+    width: 0; 
+    height: 0; 
+    border-top: 20px solid #ffec1c; 
+    border-left: 20px solid transparent;
+    position: absolute;
+	top: 0;
+	right: 0;
 }

@@ -1,6 +1,8 @@
 <div id="homies">
 	<h1>Homies</h1>
 	
+	<p class="info">Go out again</p>
+	
 	<ul id="homies_list">
 	</ul>
 </div>
@@ -10,13 +12,14 @@ String.prototype.capitalize = function() {
 }
 
 $.getJSON("users.json", function(data) {
-	for(var i=0; i<4; i++) {
+	data = data.reverse();
+	for(var i=0; i<5; i++) {
 		var user = data[i][0].user;
 		var username = user.name.first.capitalize() + " " +  user.name.last[0].capitalize() + ".";
 		var html = $("<li></li>");
 		var link = $("<a href='#' title='" + username + "' class='normal_text'></a>");
 	
-		link.append("<img class='user_image' src='" + user.picture + "' alt='user' />");
+		link.append("<div class='triangle-topright'></div><img class='user_image' src='" + user.picture + "' alt='user' />");
 		link.append("<p class='user_name'>" + username + "</p>");
 		
 		html.append(link);
