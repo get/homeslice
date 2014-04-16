@@ -6,6 +6,7 @@
 
 body {
 	background: #dddde0;
+    overflow-y: scroll;
 }
 
 body, .normal_text {
@@ -285,33 +286,32 @@ footer {
 	-moz-border-radius: 200px;
 	-webkit-border-radius: 200px;
 	border-radius: 200px;
-    float: left;
-    margin: 10px;
+    margin: 10px 20px;
 }
 
 #profile_name {
-    float: left;
-    margin: 43px 0px 0px 0px;
+    position: absolute;
+    top: 85px;
+    left: 250px;
 }
 
 #profile_from_title {
-    position: relative;
-    top: 98px;
-    left: -97px;
-    float: left;
+    position: absolute;
+    top: 130px;
+    left: 253px;
 }
 
 #profile_from {
-    position: relative;
-    top: 69px;
-    float: left;
+    position: absolute;
+    top: 132px;
+    right: 20px;
     font-family: "Signika", sans-serif;
     font-size: 16pt;
+    text-transform: capitalize;
 }
 
 #profile_like_button {
-    position: relative;
-    float: right;
+    position: absolute;
     background: #59bd41;
 	color: #fff;
 	text-decoration: none;
@@ -322,8 +322,8 @@ footer {
 	-webkit-border-radius: 30px;
 	border-radius: 30px;
 	border: none;
-    right: 27px;
-    bottom: 47px;
+    right: 29px;
+    top: 8px;
 }
 
 #profile_likes {

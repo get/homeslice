@@ -69,19 +69,39 @@ var gOverride = {
 };
 </script>
 <script type="text/javascript">
-$.widget( "ui.dialog", $.ui.dialog, {
-    open: function() {
-        this._super();
-        $( "html" ).css( "overflow", "hidden" );
-        $( "#profile_popup" ).css( "display", "" );
-    },
-    close: function() {
-        this._super();     
-        $( "html" ).css( "overflow", "visible" );
-    }
-});
+//$.widget( "ui.dialog", $.ui.dialog, {
+//    open: function() {
+//        this._super();
+//        $( "html" ).css( "overflow", "hidden" );
+//        $( "#profile_popup" ).css( "display", "" );
+//    },
+//    close: function() {
+//        this._super();     
+//        $( "html" ).css( "overflow", "visible" );
+//    }
+//});
     
-var profile = function() {
+var profile = function(index) {
+    var title = "user"+index;
+    
+    if ($.cookie(title) != undefined) {
+        $("#profile_like_button").html("&#9733;");
+    } else {
+        $("#profile_like_button").html("&#9734;");
+    }
+    
+    if (title != "user-1") {
+        $.getJSON("users.json", function(data) {
+            var user = data[index][0].user;
+            var username = user.name.first.capitalize() + " " +  user.name.last[0].capitalize() + ".";
+            var city = user.location.city.capitalize() + ", " + user.location.state;
+            
+            $("#profile_pic").prop("src", user.picture);
+            $("#profile_name").text(username);
+            $("#profile_from").text(city);
+        });
+    }
+    
     var popupHeight = 600;
     var offset = $(window).height()/2 - 64.5 - popupHeight/2 - $(window).height()/40 + $(window).scrollTop();
     var position = "center top+" + offset;
@@ -97,16 +117,14 @@ var profile = function() {
         of: "#controls",
     });
     
-    if ($.cookie("user"+0) != undefined) {
-        $("#profile_like_button").html("&#9733;");
-    }
+    $("#profile_popup").prop("title", title);
 }
 </script>
 </head>
 
 <body onload="//createGridder()">
 	
-    <div id="profile_popup" style="display: none">
+    <div id="profile_popup" title="user-1" style="display: none">
         <div id="profile_info">
             <img id="profile_pic" src="http://img2.wikia.nocookie.net/__cb20140129024919/rickandmorty/images/b/bb/Rickpic.png" alt="Rick S.">
             <h1 id="profile_name">Rick S.</h1>
@@ -122,11 +140,11 @@ var profile = function() {
             $("#profile_like_button").click(function(evt) {
                 if ($("#profile_like_button").text() === "☆") {
                     $("#profile_like_button").html("&#9733;");
-                    $.cookie("user"+0, "liked");
+                    $.cookie($("#profile_popup").prop("title"), "liked");
                 } 
                 else {
                     $("#profile_like_button").html("&#9734;");
-                    $.removeCookie("user"+0, "liked");
+                    $.removeCookie($("#profile_popup").prop("title"));
                 }
             });
         </script>
