@@ -8,7 +8,7 @@
 	overflow: auto;
 }
 
-#expats_list li {
+#expats_list .expat {
 	width: 179px;
 	background: #fff;
 	-moz-border-radius: 2px;
@@ -36,7 +36,11 @@
 #expats_list .user_name {
 	font-size: 14pt;
 	font-family: "Signika", sans-serif;
-	margin: 15px 0px 5px;
+	margin: 15px 0px 0px;
+}
+
+#expats_list .location {
+	margin: 10px 0px;
 }
 
 #expats h1 {

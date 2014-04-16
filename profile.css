@@ -108,3 +108,116 @@ ul.thumbnails.image_picker_selector li .thumbnail img {
 ul.thumbnails.image_picker_selector li .thumbnail.selected img {
     border-color: #3a4ca8;
 }
+
+
+.profile_popup {
+    position: fixed !important;
+    background: #f7f7f7;
+}
+
+.profile_popup .ui-dialog-titlebar {
+    border: 0px;
+    background-color: transparent !important;
+    background: none;
+}
+
+.profile_popup .ui-dialog-title {
+    color: #f7f7f7;
+}
+
+.profile_popup .ui-dialog-content {
+    background: #f7f7f7;
+    overflow: hidden;
+}
+
+#profile_info {
+    margin-top: -15px;
+}
+
+#profile_pic {
+    width: 200px;
+    height: 200px;
+	-moz-border-radius: 200px;
+	-webkit-border-radius: 200px;
+	border-radius: 200px;
+    margin: 10px 20px;
+    z-index: 100;
+}
+
+#profile_name {
+    position: absolute;
+    top: 65px;
+    left: 250px;
+}
+
+#profile_from_title {
+    position: absolute;
+    top: 110px;
+    left: 253px;
+}
+
+#profile_from {
+    position: absolute;
+    top: 110px;
+    right: 20px;
+    font-family: "Signika", sans-serif;
+    font-size: 16pt;
+    text-transform: capitalize;
+}
+
+#profile_like_button {
+    position: absolute;
+    background: #59bd41;
+	color: #fff;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: 30pt;
+	padding: 3px 8px;
+	-moz-border-radius: 30px;
+	-webkit-border-radius: 30px;
+	border-radius: 30px;
+	border: none;
+    right: 21px;
+    top: 0px;
+}
+
+#profile_likes_div {
+    position: relative;
+    left: 0px;
+    bottom: 0px;
+    width: 535px;
+    height: 300px;
+    padding: 0px 0px 0px 20px;
+}
+
+#likes_header {
+    font-family: "Signika", sans-serif;
+    font-size: 16pt;
+}
+
+#profile_likes_div li {
+	width: 82px;
+	background: #fff;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+	text-align: center;
+	padding: 15px;
+	float: left;
+	margin-right: 20px;
+	border-bottom: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+	margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+#profile_likes_div img {
+	width: 65px;
+	height: 65px;
+	-moz-border-radius: 65px;
+	-webkit-border-radius: 65px;
+	border-radius: 65px;
+	margin: 0px auto;
+    padding: 5px 5px 10px 5px;
+	display: block;
+}

@@ -37,8 +37,8 @@ $.extend({
 });
 
 $(document).ready(function() {
-    $('#content').load('views/' + $.getUrlVar('page').replace("/", "") + '.html');
-	$('.' + $.getUrlVar('page').replace("/", "") + '_page_link').addClass("selected");
+    $('#content').load('views/' + $.getUrlVar('page').replace("/", "").replace("#", "") + '.html');
+	$('.' + $.getUrlVar('page').replace("/", "").replace("#", "") + '_page_link').addClass("selected");
 });
 
 $(function() {
