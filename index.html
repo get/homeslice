@@ -195,8 +195,7 @@ var profile = function(index) {
 				<a href="?page=messages" title="Messages" class="messages_link">
 					<img src="images/envelope_white.png" alt="envelope" width="35" style="opacity: .1" />
 				</a>
-				
-				<button id="get_matched_button">Get Matched</button>
+
 			</div>
 			<div id="content">
 				
@@ -206,10 +205,31 @@ var profile = function(index) {
 	
 		<footer>
 			<img src="images/flag_light.png" alt="flag" />
-			<p>This is the footer. Copyright forevaaa</p>
+			<p>MIT 6.813 Class Project. &copy; 2014</p>
 		</footer>
 	
 	</section>
+
+<script type="text/javascript">
+$(function() {
+
+	switch($.cookie("match_progress")) {
+		case "2":
+			$("#controls").append('<button class="control_button" id="matches_requested_pending_button">Match requested, pending</button>');
+			break;
+		case "3":
+			$("#controls").append('<button class="control_button" id="matches_ready_button">Matches ready!</button>');
+			break;
+		case "4":
+			$("#controls").append('<button class="control_button" id="post_hangout_button">Tell us how your hangout went</button>');
+			break;
+		case "1":
+		default:
+			$("#controls").append('<button class="control_button" id="get_matched_button">Get Matched</button>');
+			break;
+	}
+});
+</script>
 
 </body>
 

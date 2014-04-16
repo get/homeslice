@@ -21,6 +21,8 @@
 	border-bottom: 1px solid #ddd;
 	border-right: 1px solid #ddd;
 	margin-bottom: 20px;
+	overflow: hidden;
+	position: relative;
 }
 
 #expats_list .user_image {
@@ -73,4 +75,16 @@
 
 #panorama_c {
 	background: black;
+}
+
+#expats_list .expat .triangle-topright {
+	border-top: 40px solid #ffec1c; 
+    border-left: 40px solid transparent;
+}
+
+.star {
+	position: absolute;
+	z-index: 5;
+	top: -36px;
+	right: 3px;
 }

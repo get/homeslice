@@ -253,8 +253,7 @@ ul, ul li {
 .caption {
 }
 
-#get_matched_button {
-	background: #59bd41;
+.control_button {
 	color: #fff;
 	text-decoration: none;
 	text-transform: uppercase;
@@ -267,6 +266,20 @@ ul, ul li {
 	margin: 17px 0px 0px 20px;
 }
 
+#get_matched_button {
+	cursor: pointer;
+	background: #59bd41;
+}
+
+#matches_ready_button {
+	background: #3a4ca8;
+}
+
+#post_hangout_button {
+	cursor: pointer;
+	background: #f16563;
+}
+
 footer {
 	width: 100%;
 	background: #252730;
@@ -277,4 +290,14 @@ footer {
 	-webkit-border-radius: 0px 0px 2px 2px;
 	color: #e5e8f8;
 	padding: 20px 0;
+}
+
+.triangle-topright { 
+    width: 0; 
+    height: 0; 
+    border-top: 20px solid #ffec1c; 
+    border-left: 20px solid transparent;
+    position: absolute;
+	top: 0;
+	right: 0;
 }
