@@ -95,15 +95,16 @@ ul.thumbnails.image_picker_selector li {
     float: left; 
 }
 ul.thumbnails.image_picker_selector li .thumbnail {
-    padding: 6px 5px 4px 6px;
     -webkit-user-select: none;
     -moz-user-select: none;
     -ms-user-select: none; 
 }
 ul.thumbnails.image_picker_selector li .thumbnail img {
     -webkit-user-drag: none; 
+    border: 6px solid transparent;
+    border-radius: 100px;
 }
-ul.thumbnails.image_picker_selector li .thumbnail.selected {
-    background: #0088cc;
-    border-radius: 50%;
+
+ul.thumbnails.image_picker_selector li .thumbnail.selected img {
+    border-color: #3a4ca8;
 }

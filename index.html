@@ -96,6 +96,10 @@ var profile = function() {
         my: "center top+" + offset,
         of: "#controls",
     });
+    
+    if ($.cookie("user"+0) != undefined) {
+        $("#profile_like_button").html("&#9733;");
+    }
 }
 </script>
 </head>
@@ -108,10 +112,24 @@ var profile = function() {
             <h1 id="profile_name">Rick S.</h1>
             <h3 id="profile_from_title">originally<br>from</h3>
             <h2 id="profile_from">Earth Dimension C-137</h2>
+            <button id="profile_like_button">&#9734;</button>
         </div>
         <div id="profile_likes">
-            
+            <h2 id="likes_header">Likes</h2>
         </div>
+        
+        <script type="text/javascript">
+            $("#profile_like_button").click(function(evt) {
+                if ($("#profile_like_button").text() === "☆") {
+                    $("#profile_like_button").html("&#9733;");
+                    $.cookie("user"+0, "liked");
+                } 
+                else {
+                    $("#profile_like_button").html("&#9734;");
+                    $.removeCookie("user"+0, "liked");
+                }
+            });
+        </script>
     </div>
     
 	<section id="container">

@@ -291,7 +291,7 @@ footer {
 
 #profile_name {
     float: left;
-    margin: 30px 0px 0px 0px;
+    margin: 43px 0px 0px 0px;
 }
 
 #profile_from_title {
@@ -305,6 +305,37 @@ footer {
     position: relative;
     top: 69px;
     float: left;
+    font-family: "Signika", sans-serif;
+    font-size: 16pt;
+}
+
+#profile_like_button {
+    position: relative;
+    float: right;
+    background: #59bd41;
+	color: #fff;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: 30pt;
+	padding: 3px 8px;
+	-moz-border-radius: 30px;
+	-webkit-border-radius: 30px;
+	border-radius: 30px;
+	border: none;
+    right: 27px;
+    bottom: 47px;
+}
+
+#profile_likes {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    width: 540px;
+    height: 300px;
+    padding: 20px 30px;
+}
+
+#likes_header {
     font-family: "Signika", sans-serif;
     font-size: 16pt;
 }
