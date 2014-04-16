@@ -21,7 +21,7 @@ $.getJSON("users.json", function(data) {
 		var user = data[i][0].user;
 		var username = user.name.first.capitalize() + " " +  user.name.last[0].capitalize() + ".";
 		var html = $("<li></li>");
-		var link = $("<a href='#' title='" + username + "' class='normal_text'></a>");
+		var link = $("<a onclick='profile()' href='javascript:void(0);' title='" + username + "' class='normal_text'></a>");
 	
 		link.append("<img class='user_image' src='" + user.picture + "' alt='user' />");
 		link.append("<p class='user_name'>" + username + "</p>");

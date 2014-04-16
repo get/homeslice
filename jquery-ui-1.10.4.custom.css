@@ -800,7 +800,7 @@ body .ui-tooltip {
 .ui-widget-content {
 	border-right: 2px solid #ddd;
 	border-bottom: 2px solid #ddd;
-	background: #f7f7f7 url("images/ui-bg_flat_75_f7f7f7_40x100.png") 50% 50% repeat-x;
+	background: #fff;
 	color: #313440;
 }
 .ui-widget-content a {

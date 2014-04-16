@@ -248,7 +248,7 @@ footer {
 
 .profile_popup .ui-dialog-titlebar {
     border: 0px;
-    background: #f7f7f7 url("images/ui-bg_flat_75_f7f7f7_40x100.png") 50% 50% repeat-x; 
+    background: #fff; 
 }
 
 #profile_pic {
