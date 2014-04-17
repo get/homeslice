@@ -59,6 +59,10 @@
 	margin-top: 12px;
 }
 
+.message_popup form {
+	margin-right: 10px;
+}
+
 #message_input {
 	width: 100%;
 	height: 100px;
@@ -112,7 +116,6 @@
 	border-radius: 30px;
 	border: none;
 	margin: 10px 0px;
-	float: right;
 }
 
 .indication {
