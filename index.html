@@ -205,7 +205,8 @@ var profile = function(index) {
 	
 		<footer>
 			<img src="images/flag_light.png" alt="flag" />
-			<p>MIT 6.813 Class Project. &copy; 2014</p>
+			<p>MIT 6.813 Class Project. &copy; <span id="copyrightyear"></span></p>
+			<script>$('#copyrightyear').text(new Date().getFullYear())</script>
 		</footer>
 	
 	</section>
