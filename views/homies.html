@@ -6,6 +6,16 @@
 	<ul id="homies_list">
 	</ul>
 </div>
+
+<div id="message_popup" style="display: none">
+    
+    <script type="text/javascript">
+        $("#send_button").click(function(evt) {
+
+        });
+    </script>
+</div>
+
 <script>
 String.prototype.capitalize = function() {
     return this.charAt(0).toUpperCase() + this.slice(1);
@@ -19,7 +29,7 @@ $.getJSON("users.json", function(data) {
 		var html = $("<li></li>");
 		var link = $("<a href='#' title='" + username + "' class='normal_text'></a>");
 		
-		link.append('<img src="images/envelope_white.png" alt="envelope" class="envelope" width="35" style="opacity: .1" />');	
+		link.append('<a href="javascript:void(0);" onclick="message(' + i + ')"><img src="images/envelope_white.png" alt="envelope" class="envelope" width="35" style="opacity: .1" />');	
 		link.append("<img class='user_image' src='" + user.picture + "' alt='user' />");
 		link.append("<p class='user_name'>" + username + "</p>");
 		
@@ -28,4 +38,26 @@ $.getJSON("users.json", function(data) {
 		$("#homies_list").append(html);
 	}
 });
+    
+var message = function(index) {
+    $.getJSON("users.json", function(data) {
+        var user = data[index][0].user;
+        var username = user.name.first.capitalize() + " " +  user.name.last[0].capitalize() + ".";
+    });
+    
+    var popupHeight = 400;
+    var offset = 50;
+    var position = "center top+" + offset;
+    $("#message_popup").dialog({
+        height: popupHeight,
+        width: 575,
+        modal: true,
+        dialogClass: "message_popup",
+        draggable: false,
+    }).parent()
+    .position({
+        my: "center top+" + offset,
+        of: "#controls",
+    });
+}
 </script>
