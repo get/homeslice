@@ -143,3 +143,20 @@
 	top: -36px;
 	right: 3px;
 }
+#matches_img {
+    position: absolute;
+    float: right;
+    width: 200px;
+    height: 231px;
+    right: -100px;
+}
+
+.matches1 {
+    background: url(/images/matches_drawing.png) no-repeat bottom right;
+    padding-bottom: 150px;
+}
+
+#cat_drawing {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
