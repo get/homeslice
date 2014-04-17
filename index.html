@@ -37,6 +37,7 @@ $.extend({
 });
 
 $(document).ready(function() {
+    $("#user_thumb").attr("style", "background: url(images/user" + $.cookie("profile_pic") + "_small.jpg) no-repeat center center");
     $('#content').load('views/' + $.getUrlVar('page').replace("/", "").replace("#", "") + '.html');
 	$('.' + $.getUrlVar('page').replace("/", "").replace("#", "") + '_page_link').addClass("selected");
 });
@@ -184,7 +185,7 @@ var profile = function(index) {
 				
 				<a href="?page=profile" title="Profile" class="profile_link">
 					<div id="user_small_thumb_container">
-						<div style="background: url(images/user_small.jpg) no-repeat center center"></div>
+						<div id="user_thumb" style="background: url(images/user1_small.jpg) no-repeat center center"></div>
 					</div>
 					<p class="username">Emily</p>
 				</a>
