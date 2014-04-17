@@ -20,6 +20,12 @@
 			$("#homies .info").after('<p class="indication" style="display: none;">Message was sent!</p>');
 			$(".indication").slideDown();
 			
+			setTimeout(function(){ 
+				$("#homies .indication").slideUp(400, function() {
+					$(this).remove();
+				}); 
+			},3000);
+			
 			return false;
         });
     </script>
