@@ -9,7 +9,7 @@
 
 <div id="message_popup" style="display: none">
     <form action="#" method="post">
-		<div id="message_label_container" for="message_input"><label id="message_receiver"></label></div>
+		<div id="message_label_container" for="message_input"><img id="user_picture"><label id="message_receiver"></label></div>
 		<textarea id="message_input"></textarea>
 		<input type="submit" value="Send" id="send_message" />
 	</form>
@@ -59,7 +59,8 @@ var message = function(index) {
         var user = data[index][0].user;
         var username = user.name.first.capitalize() + " " +  user.name.last[0].capitalize() + ".";
 		$("#message_receiver").text(username);
-		$("#message_label_container").prepend("<img src='"+user.picture+"' alt='"+username+"' />");
+		$("#user_picture").attr("src", user.picture);
+		$("#user_picture").attr("alt", username);
     });
     
     var popupHeight = 400;
