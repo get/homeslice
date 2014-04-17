@@ -167,6 +167,7 @@ ul.thumbnails.image_picker_selector li .thumbnail.selected img {
 
 #profile_like_button {
     position: absolute;
+/*
     background: #59bd41;
 	color: #fff;
 	text-decoration: none;
@@ -177,8 +178,50 @@ ul.thumbnails.image_picker_selector li .thumbnail.selected img {
 	-webkit-border-radius: 30px;
 	border-radius: 30px;
 	border: none;
+*/
     right: 21px;
     top: 0px;
+
+	cursor: pointer;
+	padding: 3px 15px;
+	color: #fff;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: 20pt;
+	
+	/*
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+	border: 0;
+	background: #ddd;
+	border: 2px solid #d2d2d2;
+	border-top: 1px solid #d2d2d2;
+	border-bottom: 11px solid #bbb;
+	*/
+	background: #ddd;
+	-moz-border-radius: 50px;
+	-webkit-border-radius: 50px;
+	border-radius: 50px;
+	padding: 3px 10px;
+	border: none;
+}
+
+#profile_like_button:active, #profile_like_button.depressed {
+	/*
+	padding-top: 7px;
+	padding-bottom: 7px;
+	border-bottom: 3px solid #bbb;
+	*/
+} 
+
+#profile_like_button.depressed {
+	background: #ffec1c;
+	/*
+	border: 2px solid #eedc14;
+	border-top: 1px solid #eedc14;
+	border-bottom: 3px solid #e7d513;
+	*/
 }
 
 #profile_likes_div {

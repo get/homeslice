@@ -84,11 +84,11 @@ var gOverride = {
 var profile = function(index) {
     var title = "user"+index;
     
-    if ($.cookie(title) != undefined) {
-        $("#profile_like_button").html("&#9733;");
+    if ($.cookie(title) == "liked") {
+        $("#profile_like_button").addClass("depressed").html("&#9733;");
     } else {
-        $("#profile_like_button").html("&#9734;");
-    }
+		$("#profile_like_button").removeClass("depressed").html("&#9734;");
+	}
     
     if (title != "user-1") {
         $.getJSON("users.json", function(data) {
@@ -148,14 +148,21 @@ var profile = function(index) {
         
         <script type="text/javascript">
             $("#profile_like_button").click(function(evt) {
-                if ($("#profile_like_button").text() === "☆") {
-                    $("#profile_like_button").html("&#9733;");
-                    $.cookie($("#profile_popup").data("user"), "liked");
-                } 
-                else {
-                    $("#profile_like_button").html("&#9734;");
-                    $.removeCookie($("#profile_popup").data("user"));
-                }
+				var user_id = parseInt($("#profile_popup").data("user").replace("user", "")) + 1;
+				
+				var cookieValue = $.cookie($("#profile_popup").data("user"));
+				
+				if(cookieValue == "liked") {
+					$("#profile_like_button").html("&#9734;");
+					$(this).removeClass("depressed");
+					$(".expat:nth-child("+user_id+") .triangle-topright").remove();
+					$.cookie($("#profile_popup").data("user"), "");
+				} else {
+					$("#profile_like_button").html("&#9733;");
+					$(this).addClass("depressed");
+					$(".expat:nth-child("+user_id+") a").prepend("<div class='triangle-topright'><img src='images/star.png' alt='' class='star' /></div>");
+					$.cookie($("#profile_popup").data("user"), "liked");
+				}				
             });
         </script>
     </div>

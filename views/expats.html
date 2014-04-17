@@ -23,7 +23,8 @@ $.getJSON("users.json", function(data) {
 		var html = $("<li class='expat'></li>");
 		var link = $("<a onclick='profile(" + i + ")' href='javascript:void(0);' title='" + username + "' class='normal_text'></a>");
 		
-		if(i%7 == 1) {
+		if($.cookie("user" + String(i)) == "liked") {
+			console.log(i)
 			link.append("<div class='triangle-topright'><img src='images/star.png' alt='' class='star' /></div>");
 		}
 		

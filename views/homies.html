@@ -19,7 +19,7 @@ $.getJSON("users.json", function(data) {
 		var html = $("<li></li>");
 		var link = $("<a href='#' title='" + username + "' class='normal_text'></a>");
 	
-		link.append("<div class='triangle-topright'></div><img class='user_image' src='" + user.picture + "' alt='user' />");
+		link.append("<img class='user_image' src='" + user.picture + "' alt='user' />");
 		link.append("<p class='user_name'>" + username + "</p>");
 		
 		html.append(link);
