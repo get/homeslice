@@ -6,7 +6,12 @@
         }
         $("#match_time").text($.cookie("match_time"));
         $.cookie("match_progress", "4");
-        $.cookie("homie2", "confirm");
+        if ($.cookie("homie0") == undefined) {
+            $.cookie("homie0", "confirm");
+        }
+        if ($.cookie("homie2") == undefined) {
+            $.cookie("homie2", "confirm");
+        }
     });
     
     String.prototype.capitalize = function() {

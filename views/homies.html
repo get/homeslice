@@ -1,7 +1,7 @@
 <div id="homies">
 	<h1>Homies</h1>
 	
-	<p class="info">Invite them to go out again by clicking on the envelope icon and sending a message.</p>
+	<p class="info" id="homies_help">Invite them to go out again by clicking on the envelope icon and sending a message.</p>
 	
 	<ul id="homies_list">
 	</ul>
@@ -31,26 +31,31 @@ String.prototype.capitalize = function() {
 }
 
 $.getJSON("users.json", function(data) {
-	data = data.reverse();
-	for(var i=0; i<5; i++) {
-		var user = data[i][0].user;
-		var username = user.name.first.capitalize() + " " +  user.name.last[0].capitalize() + ".";
-		var html = $("<li></li>");
-		var link = $("<a href='#' title='" + username + "' class='normal_text'></a>");
-		
-		link.append('<a href="javascript:void(0);" onclick="message(' + i + ')"><img src="images/envelope_white.png" alt="envelope" class="envelope" width="35" style="opacity: .1" />');	
-		link.append("<img class='user_image' src='" + user.picture + "' alt='user' />");
-		link.append("<p class='user_name'>" + username + "</p>");
-		
-		html.append(link);
-		
-		$("#homies_list").append(html);
+    var anyHomies = false;
+	for(var i=0; i<3; i++) {
+		if ("homies" === $.cookie("homie"+i)) {
+            anyHomies = true;
+            var user = data[i][0].user;
+            var username = user.name.first.capitalize() + " " +  user.name.last[0].capitalize() + ".";
+            var html = $("<li></li>");
+            var link = $("<a href='#' title='" + username + "' class='normal_text'></a>");
+
+            link.append('<a href="javascript:void(0);" onclick="message(' + i + ')"><img src="images/envelope_white.png" alt="envelope" class="envelope" width="35" style="opacity: .1" />');	
+            link.append("<img class='user_image' src='" + user.picture + "' alt='user' />");
+            link.append("<p class='user_name'>" + username + "</p>");
+
+            html.append(link);
+
+            $("#homies_list").append(html);
+        }
 	}
+    if (!anyHomies) {
+        $("#homies_help").html('You have no homies! How about you head over to <a id="matches_link" href="?page=matches' + $.cookie("match_progress") + '">Get Matched</a> and meet some people?');
+    }
 });
     
 var message = function(index) {
     $.getJSON("users.json", function(data) {
-		data = data.reverse();
         var user = data[index][0].user;
         var username = user.name.first.capitalize() + " " +  user.name.last[0].capitalize() + ".";
 		$("#message_receiver").text(username);
