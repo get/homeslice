@@ -24,8 +24,7 @@ a {
 }
 
 .info a {
-    color: #000;
-    font-weight: 900;
+    text-decoration: underline;
 }
 
 h1, h2, h3 {
