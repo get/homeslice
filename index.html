@@ -40,16 +40,6 @@ $(document).ready(function() {
     $('#content').load('views/' + $.getUrlVar('page').replace("/", "").replace("#", "") + '.html');
 	$('.' + $.getUrlVar('page').replace("/", "").replace("#", "") + '_page_link').addClass("selected");
 });
-
-$(function() {
-    $("#get_matched_button").click(function(evt) {
-        var matchProgress = $.cookie("match_progress");
-        if (matchProgress == undefined) {
-            matchProgress = "1";
-        }
-        window.location.href = "index.html?page=matches"+matchProgress;
-    });
-});
 </script>
 <script type="text/javascript">
 // Insert optional override object before the function
@@ -145,14 +135,14 @@ var profile = function(index) {
         <div id="profile_likes_div">
             <h2 id="likes_header">Likes</h2>
             <ul id="profile_likes">
-                <li id="like_item"><img id="like_img" src="http://www.hudsonfla.com/hstusflag.jpg" alt="Amurica!"><h3 id="like_text">The United States</h3></li>
-                <li id="like_item"><img id="like_img" src="http://www.hudsonfla.com/hstusflag.jpg" alt="Amurica!"><h3 id="like_text">The United States</h3></li>
-                <li id="like_item"><img id="like_img" src="http://www.hudsonfla.com/hstusflag.jpg" alt="Amurica!"><h3 id="like_text">The United States</h3></li>
-                <li id="like_item"><img id="like_img" src="http://www.hudsonfla.com/hstusflag.jpg" alt="Amurica!"><h3 id="like_text">The United States</h3></li>
-                <li id="like_item"><img id="like_img" src="http://www.hudsonfla.com/hstusflag.jpg" alt="Amurica!"><h3 id="like_text">The United States</h3></li>
-                <li id="like_item"><img id="like_img" src="http://www.hudsonfla.com/hstusflag.jpg" alt="Amurica!"><h3 id="like_text">The United States</h3></li>
-                <li id="like_item"><img id="like_img" src="http://www.hudsonfla.com/hstusflag.jpg" alt="Amurica!"><h3 id="like_text">The United States</h3></li>
-                <li id="like_item"><img id="like_img" src="http://www.hudsonfla.com/hstusflag.jpg" alt="Amurica!"><h3 id="like_text">The United States</h3></li>
+                <li class ="like_item"><img class="like_img" src="http://www.hudsonfla.com/hstusflag.jpg" alt="Amurica!"><h3 id="like_text">The United States</h3></li>
+                <li class ="like_item"><img class="like_img" src="http://www.hudsonfla.com/hstusflag.jpg" alt="Amurica!"><h3 id="like_text">The United States</h3></li>
+                <li class ="like_item"><img class="like_img" src="http://www.hudsonfla.com/hstusflag.jpg" alt="Amurica!"><h3 id="like_text">The United States</h3></li>
+                <li class ="like_item"><img class="like_img" src="http://www.hudsonfla.com/hstusflag.jpg" alt="Amurica!"><h3 id="like_text">The United States</h3></li>
+                <li class ="like_item"><img class="like_img" src="http://www.hudsonfla.com/hstusflag.jpg" alt="Amurica!"><h3 id="like_text">The United States</h3></li>
+                <li class ="like_item"><img class="like_img" src="http://www.hudsonfla.com/hstusflag.jpg" alt="Amurica!"><h3 id="like_text">The United States</h3></li>
+                <li class ="like_item"><img class="like_img" src="http://www.hudsonfla.com/hstusflag.jpg" alt="Amurica!"><h3 id="like_text">The United States</h3></li>
+                <li class ="like_item"><img class="like_img" src="http://www.hudsonfla.com/hstusflag.jpg" alt="Amurica!"><h3 id="like_text">The United States</h3></li>
             </ul>
         </div>
         
@@ -229,6 +219,31 @@ $(function() {
 			$("#controls").append('<button class="control_button" id="get_matched_button">Get Matched</button>');
 			break;
 	}
+});
+    
+$(function() {
+    $("#get_matched_button").click(function(evt) {
+        window.location.href = "index.html?page=matches1";
+    });
+    
+    
+    $("#matches_requested_pending_button").click(function(evt) {
+        if ($.getUrlVar('page') != "matches2") {
+            window.location.href = "index.html?page=matches2";
+        }
+    });
+    
+    
+    $("#matches_ready_button").click(function(evt) {
+        if ($.getUrlVar('page') != "matches3") {
+            window.location.href = "index.html?page=matches3";
+        }
+    });
+    
+    
+    $("#post_hangout_button").click(function(evt) {
+        window.location.href = "index.html?page=matches4";
+    });
 });
 </script>
 
