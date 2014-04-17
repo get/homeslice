@@ -1,5 +1,5 @@
 #matches {
-    padding: 20px;
+    padding-top: 20px;
     overflow: auto;
     text-align: center;
 }
@@ -52,10 +52,94 @@
 	-webkit-border-radius: 30px;
 	border-radius: 30px;
 	border: none;
-	margin: 0px 0px 0px 0px;
+	margin: 20px 0px 40px 0px;
+}
+
+.homie_control {
+    color: #fff;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: 9pt;
+	padding: 10px 20px;
+	-moz-border-radius: 30px;
+	-webkit-border-radius: 30px;
+	border-radius: 30px;
+	border: none;
+	margin: 5px 0px 5px 0px;
+}
+
+.add_homie_button {
+	background: #59bd41;
+}
+
+.pending_homie_button {
+    
+}
+
+.confirm_homie_button {
+	background: #59bd41;
+}
+
+.already_homie_button {
+    background: #3a4ca8;
 }
 
 #match_for_label {
     font-size: 12pt;
     margin-left: 10px;
+}
+
+#match_list {
+	margin-top: 20px;
+	margin-left: 20px;
+	overflow: auto;
+}
+
+#match_list .match {
+	width: 179px;
+	background: #fff;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+	text-align: center;
+	padding: 20px;
+	float: left;
+	margin-right: 20px;
+	border-bottom: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+	margin-bottom: 20px;
+	overflow: hidden;
+	position: relative;
+}
+
+#match_list .user_image {
+	width: 120px;
+	height: 120px;
+	-moz-border-radius: 120px;
+	-webkit-border-radius: 120px;
+	border-radius: 120px;
+	margin: 0px auto;
+	display: block;
+}
+
+#match_list .user_name {
+	font-size: 14pt;
+	font-family: "Signika", sans-serif;
+	margin: 15px 0px 0px;
+}
+
+#match_list .location {
+	margin: 10px 0px;
+}
+
+#match_list .match .triangle-topright {
+	border-top: 40px solid #ffec1c; 
+    border-left: 40px solid transparent;
+}
+
+.star {
+	position: absolute;
+	z-index: 5;
+	top: -36px;
+	right: 3px;
 }

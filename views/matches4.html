@@ -1,7 +1,7 @@
 <script type="text/javascript">
     $(document).ready(function() {
         $("#match_time").text($.cookie("match_time"));
-        $.cookie("match_progress", "4")
+        $.cookie("match_progress", "4");
     });
     
     $(function() {
@@ -11,13 +11,60 @@
             window.location.href = "index.html?page=matches1";
         });
     });
+    
+    String.prototype.capitalize = function() {
+        return this.charAt(0).toUpperCase() + this.slice(1);
+    }
+    
+    $.getJSON("users.json", function(data) {
+        for(var i=0; i<3; i++) {
+            var user = data[i][0].user;
+            var username = user.name.first.capitalize() + " " +  user.name.last[0].capitalize() + ".";
+            var html = $("<li class='match'></li>");
+            var link = $("<a onclick='profile(" + i + ")' href='javascript:void(0);' title='" + username + "' class='normal_text'></a>");
+
+            link.append("<img class='user_image' src='" + user.picture + "' alt='user' />");
+            link.append("<p class='user_name'>" + username + "</p>");
+
+            html.append(link);
+            
+            if ($.cookie("homie"+i) == undefined) {
+                html.append("<button class='homie_control add_homie_button' id='add_homie_button" + i + "''>ADD HOMIE</button>");
+            } else if ($.cookie("homie"+i) === "confirm") {
+                html.append("<button class='homie_control confirm_homie_button' id='confirm_homie_button" + i + "''>CONFIRM HOMIE</button>");
+            } else if ($.cookie("homie"+i) === "pending") {
+                html.append("<button class='homie_control pending_homie_button' id='pending_homie_button" + i + "''>PENDING</button>");
+            } else {
+                html.append("<button class='homie_control already_homie_button' id='already_homie_button" + i + "''>HOMIES</button>");
+            }
+
+            $("#match_list").append(html);
+            
+            $("#add_homie_button"+i).click(function(evt) {
+                var intRegex = /[0-9 -()+]+$/;
+                var index = evt.target.id.match(/[0-9 -()+]+$/)[0];
+                
+                $.cookie("homie"+index, "pending");
+                window.location.href = "index.html?page=matches4";
+            });
+
+            $("#confirm_homie_button"+i).click(function(evt) {
+                var intRegex = /[0-9 -()+]+$/;
+                var index = evt.target.id.match(/[0-9 -()+]+$/)[0];
+                console.log(index);
+                
+                $.cookie("homie"+index, "homies");
+                window.location.href = "index.html?page=matches4";
+            });
+        }
+    });
+    
 </script>
 
 <div id="matches">
     <h1>Hope you had a blast!</h1><br>
     <h2>Let us know how it went:</h2>
-    
-    <br><br>
+    <ul id="match_list"></ul>
     <p class="info">Add them to your homies!<br><br>If the connection is mutual, you'll be able to message them from your <a href="?page=homies">homies page</a>.</p>
     
     <button id="match_again_button">Match me again</button>
