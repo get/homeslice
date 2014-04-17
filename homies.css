@@ -43,7 +43,7 @@
 	max-width: 70px;
 }
 
-#homies_list .user_image {
+#homies_list .user_image, #message_label_container img {
 	width: 40px;
 	height: 40px;
 	-moz-border-radius: 40px;
@@ -57,4 +57,71 @@
 #homies_list .envelope {
 	float: right;
 	margin-top: 12px;
+}
+
+#message_input {
+	width: 100%;
+	height: 100px;
+	resize: none;
+	outline: 0px;
+	-webkit-appearance: none;
+	background: #fff;
+	border: none;
+	padding: 10px;
+	font-size: 10pt;
+	margin: 0;
+	margin-top: -3px;
+}
+
+.message_popup {
+	background: #f7f7f7 !important;
+	padding-right: 10px;
+}
+
+#message_label_container {
+	background: #fff;
+	border-radius: 10px 10px 0px 0px;
+	-moz-border-radius: 10px 10px 0px 0px;
+	-webkit-border-radius: 10px 10px 0px 0px;
+	overflow: auto;
+	width: auto;
+	display: inline-block;
+	padding: 5px 15px;
+}
+
+#message_label_container label {
+	font-size: 10pt;
+	font-family: "Signika", sans-serif;
+	line-height: 40px;
+	margin-left: 10px;
+	margin-bottom: 0;
+}
+
+#message_label_container img {
+	margin: 0;
+}
+
+.message_popup input[type=submit] {
+	background: #59bd41;
+	color: #fff;
+	text-decoration: none;
+	font-size: 9pt;
+	padding: 10px 20px;
+	-moz-border-radius: 30px;
+	-webkit-border-radius: 30px;
+	border-radius: 30px;
+	border: none;
+	margin: 10px 0px;
+	float: right;
+}
+
+.indication {
+	background: #bfefb9;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+	padding: 20px;
+	font-size: 10pt;
+	margin-right: 20px;
+	margin-bottom: 20px;
 }

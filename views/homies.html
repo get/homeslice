@@ -1,17 +1,26 @@
 <div id="homies">
 	<h1>Homies</h1>
 	
-	<p class="info">Go out again</p>
+	<p class="info">Invite them to go out again by clicking on the envelope icon and sending a message.</p>
 	
 	<ul id="homies_list">
 	</ul>
 </div>
 
 <div id="message_popup" style="display: none">
-    
+    <form action="#" method="post">
+		<div id="message_label_container" for="message_input"><label id="message_receiver"></label></div>
+		<textarea id="message_input"></textarea>
+		<input type="submit" value="Send" id="send_message" />
+	</form>
     <script type="text/javascript">
-        $("#send_button").click(function(evt) {
-
+        $("#send_message").click(function(evt) {
+			$(".ui-dialog-titlebar-close").trigger("click");
+			
+			$("#homies .info").after('<p class="indication" style="display: none;">Message was sent!</p>');
+			$(".indication").slideDown();
+			
+			return false;
         });
     </script>
 </div>
@@ -34,22 +43,25 @@ $.getJSON("users.json", function(data) {
 		link.append("<p class='user_name'>" + username + "</p>");
 		
 		html.append(link);
-
+		
 		$("#homies_list").append(html);
 	}
 });
     
 var message = function(index) {
     $.getJSON("users.json", function(data) {
+		data = data.reverse();
         var user = data[index][0].user;
         var username = user.name.first.capitalize() + " " +  user.name.last[0].capitalize() + ".";
+		$("#message_receiver").text(username);
+		$("#message_label_container").prepend("<img src='"+user.picture+"' alt='"+username+"' />");
     });
     
     var popupHeight = 400;
     var offset = 50;
     var position = "center top+" + offset;
     $("#message_popup").dialog({
-        height: popupHeight,
+        height: "auto",
         width: 575,
         modal: true,
         dialogClass: "message_popup",
