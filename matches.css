@@ -95,7 +95,7 @@
 	overflow: auto;
 }
 
-#match_list .match {
+#match_list .expat, .match {
 	width: 179px;
 	background: #fff;
 	-moz-border-radius: 2px;
@@ -132,7 +132,7 @@
 	margin: 10px 0px;
 }
 
-#match_list .match .triangle-topright {
+#match_list .expat .triangle-topright {
 	border-top: 40px solid #ffec1c; 
     border-left: 40px solid transparent;
 }

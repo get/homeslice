@@ -17,11 +17,14 @@
         for(var i=0; i<3; i++) {
             var user = data[i][0].user;
             var username = user.name.first.capitalize() + " " +  user.name.last[0].capitalize() + ".";
-            var html = $("<li class='match'></li>");
+            var html = $("<li class='expat'></li>");
             var link = $("<a onclick='profile(" + i + ")' href='javascript:void(0);' title='" + username + "' class='normal_text'></a>");
-
-//            link.append("<div class='triangle-topright'><img src='images/star.png' alt='' class='star' /></div>");
-
+            
+            if($.cookie("user" + String(i)) == "liked") {
+                console.log(i)
+                link.append("<div class='triangle-topright'><img src='images/star.png' alt='' class='star' /></div>");
+            }
+            
             link.append("<img class='user_image' src='" + user.picture + "' alt='user' />");
             link.append("<p class='user_name'>" + username + "</p>");
             link.append("<p class='location'>Singapore, Singapore</p>");
