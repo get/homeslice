@@ -79,6 +79,7 @@ var message = function(index) {
         modal: true,
         dialogClass: "message_popup",
         draggable: false,
+        open: function(event, ui) { $('.ui-widget-overlay').bind('click', function(){ $("#message_popup").dialog('close'); }); },
     }).parent()
     .position({
         my: "center top+" + offset,

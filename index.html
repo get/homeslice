@@ -70,17 +70,6 @@ var gOverride = {
 };
 </script>
 <script type="text/javascript">
-//$.widget( "ui.dialog", $.ui.dialog, {
-//    open: function() {
-//        this._super();
-//        $( "html" ).css( "overflow", "hidden" );
-//        $( "#profile_popup" ).css( "display", "" );
-//    },
-//    close: function() {
-//        this._super();     
-//        $( "html" ).css( "overflow", "visible" );
-//    }
-//});
     
 var profile = function(index) {
     var title = "user"+index;
@@ -112,6 +101,7 @@ var profile = function(index) {
         modal: true,
         dialogClass: "profile_popup",
         draggable: false,
+        open: function(event, ui) { $('.ui-widget-overlay').bind('click', function(){ $("#profile_popup").dialog('close'); }); }
     }).parent()
     .position({
         my: "center top+" + offset,
