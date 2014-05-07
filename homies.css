@@ -128,3 +128,32 @@
 	margin-right: 20px;
 	margin-bottom: 20px;
 }
+
+#homies .homie_control {
+    float: right;
+    color: #fff;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: 7pt;
+	padding: 5px 10px;
+	-moz-border-radius: 30px;
+	-webkit-border-radius: 30px;
+	border-radius: 30px;
+	border: none;
+	margin: -41px -5px 0px 0px;
+    z-index: 10;
+}
+
+#homies .add_homie_button {
+    cursor: pointer;
+	background: #59bd41;
+}
+
+#homies .pending_homie_button {
+    
+}
+
+#homies .confirm_homie_button {
+    cursor: pointer;
+	background: #59bd41;
+}

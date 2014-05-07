@@ -69,6 +69,7 @@
 }
 
 .add_homie_button {
+    cursor: pointer;
 	background: #59bd41;
 }
 
@@ -77,6 +78,7 @@
 }
 
 .confirm_homie_button {
+    cursor: pointer;
 	background: #59bd41;
 }
 

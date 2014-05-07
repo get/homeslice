@@ -253,6 +253,7 @@ ul, ul li {
 }
 
 .control_button {
+    cursor: pointer;
 	color: #fff;
 	text-decoration: none;
 	text-transform: uppercase;
@@ -266,7 +267,6 @@ ul, ul li {
 }
 
 #get_matched_button {
-	cursor: pointer;
 	background: #59bd41;
 }
 
@@ -275,7 +275,6 @@ ul, ul li {
 }
 
 #post_hangout_button {
-	cursor: pointer;
 	background: #f16563;
 }
 

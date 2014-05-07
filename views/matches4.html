@@ -1,16 +1,17 @@
 <script type="text/javascript">
     $(document).ready(function() {
         $("#match_time").text($.cookie("match_time"));
-        $.cookie("match_progress", "4");
+        $.cookie("match_progress", "1");
+        $.cookie("finishedMatch", "yes");
     });
     
-    $(function() {
-        $("#match_again_button").click(function(evt) {
-            $.cookie("match_progress", "1");
-            $.removeCookie("match_time");
-            window.location.href = "index.html?page=matches1";
-        });
-    });
+//    $(function() {
+//        $("#match_again_button").click(function(evt) {
+//            $.cookie("match_progress", "1");
+//            $.removeCookie("match_time");
+//            window.location.href = "index.html?page=matches1";
+//        });
+//    });
     
     String.prototype.capitalize = function() {
         return this.charAt(0).toUpperCase() + this.slice(1);
@@ -67,5 +68,5 @@
     <ul id="match_list"></ul>
     <p class="info">Add them to your homies!<br><br>If the connection is mutual, you'll be able to message them from your <a href="?page=homies">homies page</a>.</p>
     
-    <button id="match_again_button">Match me again</button>
+<!--    <button id="match_again_button">Match me again</button>-->
 </div>
