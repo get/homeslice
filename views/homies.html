@@ -16,11 +16,17 @@
 	</form>
     <script type="text/javascript">
         $("#send_message").click(function(evt) {
-			$(".ui-dialog-titlebar-close").trigger("click");
-			
-            if ("" === $("#message_input").val()) {
-                $("#homies .info").after('<p class="indication" style="display: none;">Empty message. Nothing was sent!</p>');
+            if (!$("#message_input").val()) {
+                $("#previous_messages").before('<p class="error" style="display: none;">Empty message. Nothing was sent!</p>');
+                
+                $(".error").slideDown();
+                setTimeout(function(){ 
+                    $("#message_popup .error").slideUp(400, function() {
+                        $(this).remove();
+                    }); 
+                },3000);
             } else {
+                $("#previous_messages").before('<p class="indication" style="display: none;">Message was sent!</p>');
                 var index = $("#message_popup").data("user");
                 if (undefined === $.cookie("messages"+index)) {
                     $.cookie("messages"+index, 1);
@@ -31,16 +37,17 @@
                 var d = new Date();
                 var n = d.getTime();
                 $.cookie("homieMessage"+index+"-"+$.cookie("messages"+index)+"-time", n);
-                $("#homies .info").after('<p class="indication" style="display: none;">Message was sent!</p>');
+                
+                $(".indication").slideDown();
+                setTimeout(function(){ 
+                    $("#message_popup .indication").slideUp(400, function() {
+                        $(this).remove();
+                    }); 
+                },3000);
+
+                $("#message_input").val("");
             }
-			$(".indication").slideDown();
-			
-			setTimeout(function(){ 
-				$("#homies .indication").slideUp(400, function() {
-					$(this).remove();
-				}); 
-			},3000);
-			
+            
 			return false;
         });
     </script>
@@ -107,10 +114,8 @@ var message = function(index) {
 		$("#message_receiver").text(username);
 		$("#user_picture").attr("src", user.picture);
 		$("#user_picture").attr("alt", username);
-        $("#message_input").val("");
     });
     
-    $("#previous_messages").html("");
     var numMessages = parseInt($.cookie("messages"+index));
     for(var i = 0; i < numMessages; i++) {
         var oldMessage = $('<li></li>');
@@ -132,6 +137,7 @@ var message = function(index) {
         dialogClass: "message_popup",
         draggable: false,
         open: function(event, ui) { $('.ui-widget-overlay').bind('click', function(){ $("#message_popup").dialog('close'); }); },
+        close: function(event, ui) { $("#message_popup .indication").remove(); $("#message_popup .error").remove(); $("#message_input").val(""); $("#previous_messages").html(""); },
     }).parent()
     .position({
         my: "center top+" + offset,
