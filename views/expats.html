@@ -8,7 +8,7 @@
 	<p class="info"><b>Star</b> the users whose profiles you find interesting, and we'll try our best to match you with them (<b>we won't let them know</b>).</p>
 	
 	<div id="filter_users">
-	  <p>Filter by: <input type="text" value="home town" id="filter_users_input" onfocus="if(this.value == 'home town') {this.value = '';}" onblur="if (this.value == '') {this.value = 'home town';}" /><select id="state_filter" name="state">
+	  <p>Filter by: <input type="text" value="hometown" id="filter_users_input" onfocus="if(this.value == 'hometown') {this.value = '';}" onblur="if (this.value == '') {this.value = 'hometown';}" /><select id="state_filter" name="state">
 	      <option value="" id="default_state_value">state</option>
 	    </select>
 	    <a href="#" title="Reset Filters" id="reset_filters" class="normal_text">reset filter</a>
@@ -42,7 +42,6 @@ $.getJSON("users.json", function(data) {
 		
 		link.append("<img class='user_image' src='" + user.picture + "' alt='user' />");
 		link.append("<p class='user_name'>" + username + "</p>");
-		link.append("<p class='location'>Singapore, Singapore</p>");
 		link.append("<p class='hometown'>Hometown: "+ user.location.city.capitalize() + ", " + user.location.state +"</p>");
 		
 		html.append(link);
@@ -66,11 +65,11 @@ $(document).ready(function(){
         if($(this).is(":visible")) {
           if(state && !isIn($(".hometown", this).text().split(",")[1], state)) $(this).hide();
           
-          if(hometown && hometown != "home town" && !isIn($(".hometown", this).text().toLowerCase().split(",")[0], $.trim(hometown.toLowerCase()))) $(this).hide();
+          if(hometown && hometown != "hometown" && !isIn($(".hometown", this).text().toLowerCase().split(",")[0], $.trim(hometown.toLowerCase()))) $(this).hide();
         } else {
           if(state) {
             if(isIn($(".hometown", this).text().split(",")[1], state)) {
-              if(hometown && hometown != "home town") {
+              if(hometown && hometown != "hometown") {
                  if(isIn($(".hometown", this).text().toLowerCase().split(",")[0], $.trim(hometown.toLowerCase()))) $(this).show();
                  else $(this).hide();
               } else {
@@ -78,7 +77,7 @@ $(document).ready(function(){
               }
             }
           } else {
-            if(hometown && hometown != "home town") {
+            if(hometown && hometown != "hometown") {
                if(isIn($(".hometown", this).text().toLowerCase().split(",")[0], $.trim(hometown.toLowerCase()))) $(this).show();
                else $(this).hide();
             } else {
@@ -93,7 +92,7 @@ $(document).ready(function(){
     $("#reset_filters").click(function() {
       $("#state_filter option").removeAttr("selected");
       $("#default_state_value").attr("selected", "selected");
-      $("#filter_users_input").val("home town");
+      $("#filter_users_input").val("hometown");
       filter_by($("#state_filter option:selected").val(), $("#filter_users_input").val());
       return false;
     });
@@ -107,11 +106,11 @@ $(document).ready(function(){
     });
     
     // begin code to make header sticky
-    $("#panorama_c").sticky( {topSpacing:-75} );
+    $("#panorama_c").sticky( {topSpacing:-65} );
     
     $(window).scroll(function() {
         var scrolled = $(window).scrollTop();
-        var offset = ((scrolled-99)*1.1).clamp(42, 78);
+        var offset = ((scrolled-99)*1.1).clamp(42, 73);
         $('#panorama_title').css('padding-top', offset);
         console.log($("#panorama_title").css("padding-top"));
     });

@@ -45,6 +45,11 @@
 	margin: 10px 0px;
 }
 
+#expats_list .hometown {
+    text-transform: capitalize;
+	margin: 10px 0px;
+}
+
 #expats h1 {
 	font-weight: 100;
 	color: #fff;
