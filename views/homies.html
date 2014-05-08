@@ -8,12 +8,12 @@
 </div>
 
 <div id="message_popup" style="display: none">
-    <ul id="previous_messages"></ul>
     <form action="#" method="post">
 		<div id="message_label_container" for="message_input"><img id="user_picture"><label id="message_receiver"></label></div>
 		<textarea id="message_input"></textarea>
 		<input type="submit" value="Send" id="send_message" />
 	</form>
+	<ul id="previous_messages"></ul>
     <script type="text/javascript">
         $("#send_message").click(function(evt) {
             if (!$("#message_input").val()) {
@@ -26,7 +26,23 @@
                     }); 
                 },3000);
             } else {
-                $("#previous_messages").before('<p class="indication" style="display: none;">Message was sent!</p>');
+                $("#message_popup form").before('<p class="indication" style="display: none;">Message was sent!</p>');
+                /*
+                var messagehtml = $('<li></li>');
+                // append stuff to oldMessage if you need it. all messages will
+                // be sent by user so you can probably just pull in user pic
+                messagehtml.append("<img src='" + "images/user" + $.cookie("profile_pic") + "_small.jpg" + "' alt='profile pic' class='profile_picture' />");
+                messagehtml.append("<p>"+ $.cookie("username") +":</p>")
+                messagehtml.append("<p>" + $("#message_input").val()+"</p>");
+                $("#previous_messages").prepend(messagehtml);
+                */
+                var oldMessage = $('<li></li>');
+                var sentTime = new Date();
+                // append stuff to oldMessage if you need it. all messages will
+                // be sent by user so you can probably just pull in user pic
+                oldMessage.append("<div><img src='" + "images/user" + $.cookie("profile_pic") + "_small.jpg" + "' alt='profile pic' class='profile_picture' /><p class='message_content'><b>"+ $.cookie("username") +"</b>: " + $("#message_input").val() + "</p><p class='timeago'>"+jQuery.timeago(sentTime)+"</p></div>");
+                $("#previous_messages").prepend(oldMessage);
+                
                 var index = $("#message_popup").data("user");
                 if (undefined === $.cookie("messages"+index)) {
                     $.cookie("messages"+index, 1);
@@ -35,7 +51,7 @@
                 }
                 $.cookie("homieMessage"+index+"-"+$.cookie("messages"+index), $("#message_input").val());
                 var d = new Date();
-                var n = d.getTime();
+                var n = d;
                 $.cookie("homieMessage"+index+"-"+$.cookie("messages"+index)+"-time", n);
                 
                 $(".indication").slideDown();
@@ -94,7 +110,7 @@ $.getJSON("users.json", function(data) {
             var index = evt.target.id.match(/[0-9 -()+]+$/)[0];
 
             $.cookie("homie"+index, "pending");
-            window.location.href = "index.html?page=homies";
+            window.location.href = "?page=homies";
         });
         
         $("#confirm_homie_button"+i).click(function(evt) {
@@ -102,7 +118,7 @@ $.getJSON("users.json", function(data) {
             var index = evt.target.id.match(/[0-9 -()+]+$/)[0];
 
             $.cookie("homie"+index, "homies");
-            window.location.href = "index.html?page=homies";
+            window.location.href = "?page=homies";
         });
 	}
 });
@@ -117,14 +133,13 @@ var message = function(index) {
     });
     
     var numMessages = parseInt($.cookie("messages"+index));
-    for(var i = 0; i < numMessages; i++) {
+    for(var i = numMessages-1; i >= 0; i--) {
         var oldMessage = $('<li></li>');
+        var sentTime = new Date($.cookie("homieMessage"+index+"-"+(i+1)+"-time"));
         // append stuff to oldMessage if you need it. all messages will
         // be sent by user so you can probably just pull in user pic
-        oldMessage.append($.cookie('homieMessage'+index+'-'+(i+1)));
+        oldMessage.append("<div><img src='" + "images/user" + $.cookie("profile_pic") + "_small.jpg" + "' alt='profile pic' class='profile_picture' /><p class='message_content'><b>"+ $.cookie("username") +"</b>: " + $.cookie('homieMessage'+index+'-'+(i+1)) + "</p><p class='timeago'>"+jQuery.timeago(sentTime)+"</p></div>");
         $("#previous_messages").append(oldMessage);
-        // Date's getTime()
-        var sentTime = $.cookie("homieMessage"+index+"-"+(i+1)+"-time");
     }
     
     var popupHeight = 400;
