@@ -55,6 +55,7 @@
 }
 
 #homies_list .envelope {
+    z-index: 10;
 	float: right;
 	margin-top: 12px;
 }
