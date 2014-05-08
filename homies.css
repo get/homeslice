@@ -130,6 +130,17 @@
 	margin-bottom: 20px;
 }
 
+.error {
+	background: #f28484;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	border-radius: 2px;
+	padding: 20px;
+	font-size: 10pt;
+	margin-right: 20px;
+	margin-bottom: 20px;
+}
+
 #homies .homie_control {
     float: right;
 	font-size: 7pt;
