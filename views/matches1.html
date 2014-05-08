@@ -1,5 +1,8 @@
 <script type="text/javascript">
     $(function() {
+        if (parseInt($.cookie("match_progress")) != 1) {
+            window.location.href = "index.html?page=matches" + $.cookie("match_progress");
+        }
         $("#match_confirm_button").click(function(evt) {
             $.cookie("match_progress", "2");
             $.cookie("match_time", $("#match_for").val());
