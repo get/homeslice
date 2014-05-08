@@ -5,7 +5,15 @@
 		</div>
 	</div>
 	
-	<p class="info">In order to best match you with others in your area, we could use some input from you. <b>Star</b> the users whose profiles you find interesting, and we'll try our best to match you with them (<b>we won't let them know</b>).</p>
+	<p class="info"><b>Star</b> the users whose profiles you find interesting, and we'll try our best to match you with them (<b>we won't let them know</b>).</p>
+	
+	<div id="filter_users">
+	  <p>Filter by: <input type="text" value="home town" id="filter_users_input" onfocus="if(this.value == 'home town') {this.value = '';}" onblur="if (this.value == '') {this.value = 'home town';}" /><select id="state_filter" name="state">
+	      <option value="">state</option>
+	    </select>
+	    <a href="#" title="Reset Filters" id="reset_filters" class="normal_text">reset filter</a>
+	  </p>
+	</div>
 
 	<ul id="expats_list">
 	</ul>
@@ -39,9 +47,60 @@ $.getJSON("users.json", function(data) {
 	}
 });
 
-// begin code to make header sticky
 $(document).ready(function(){
     $("#panorama_c").sticky( {topSpacing:0} );
+    
+    var states = ['AK', 'AL', 'AR', 'AZ', 'CA', 'CO', 'CT', 'DC', 'DE', 'FL', 'GA', 'HI', 'IA', 'ID', 'IL', 'IN', 'KS', 'KY', 'LA', 'MA', 'MD', 'ME', 'MI', 'MN', 'MO', 'MS', 'MT', 'NC', 'ND', 'NE', 'NH', 'NJ', 'NM', 'NV', 'NY', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VA', 'VT', 'WA', 'WI', 'WV', 'WY'];
+    for(var i in states) $("#state_filter").append("<option value='"+states[i]+"'>"+states[i]+"</option>");
+    
+    function isIn(str, substr) {
+      return str.indexOf(substr) > 0;
+    }
+    
+    function filter_by(state, hometown) {
+      console.log(state, hometown)
+      $.each($(".expat"), function() {
+        if($(this).is(":visible")) {
+          if(state && !isIn($(".hometown", this).text().split(",")[1], state)) $(this).hide();
+          
+          if(hometown && hometown != "home town" && !isIn($(".hometown", this).text().toLowerCase().split(",")[0], $.trim(hometown.toLowerCase()))) $(this).hide();
+        } else {
+          if(state) {
+            if(isIn($(".hometown", this).text().split(",")[1], state)) {
+              if(hometown && hometown != "home town") {
+                 if(isIn($(".hometown", this).text().toLowerCase().split(",")[0], $.trim(hometown.toLowerCase()))) $(this).show();
+                 else $(this).hide();
+              } else {
+                $(this).show();
+              }
+            }
+          } else {
+            if(hometown && hometown != "home town") {
+               if(isIn($(".hometown", this).text().toLowerCase().split(",")[0], $.trim(hometown.toLowerCase()))) $(this).show();
+               else $(this).hide();
+            } else {
+              $(this).show();
+            }
+          }
+        }
+      });
+        
+    }    
+    
+    $("#reset_filters").click(function() {
+      $("#state_filter option").attr("selected", "");
+      $("#state_filter option:first-child").attr("selected", "selected");
+      $("#filter_users_input").val("home town");
+      filter_by($("#state_filter option:selected").val(), $("#filter_users_input").val());
+      return false;
+    });
+    
+    $("#filter_users_input").keyup(function() {
+      filter_by($("#state_filter option:selected").val(), $("#filter_users_input").val());
+    });
+    
+    $("#state_filter").change(function() {
+      filter_by($("#state_filter option:selected").val(), $("#filter_users_input").val());
+    });
 });
-// end code to make header sticky
 </script>
