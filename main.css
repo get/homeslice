@@ -206,6 +206,10 @@ ul, ul li {
 	background-repeat: no-repeat;
 }
 
+#main_navigation li a:hover {
+    background-color: #292b34;
+}
+
 #main_navigation li a.selected {
 	background-color: #252730;
 	color: #fff;

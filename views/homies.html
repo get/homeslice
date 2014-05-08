@@ -8,6 +8,7 @@
 </div>
 
 <div id="message_popup" style="display: none">
+    <ul id="previous_messages"></ul>
     <form action="#" method="post">
 		<div id="message_label_container" for="message_input"><img id="user_picture"><label id="message_receiver"></label></div>
 		<textarea id="message_input"></textarea>
@@ -17,7 +18,18 @@
         $("#send_message").click(function(evt) {
 			$(".ui-dialog-titlebar-close").trigger("click");
 			
-			$("#homies .info").after('<p class="indication" style="display: none;">Message was sent!</p>');
+            if ("" === $("#message_input").val()) {
+                $("#homies .info").after('<p class="indication" style="display: none;">Empty message. Nothing was sent!</p>');
+            } else {
+                var index = $("#message_popup").data("user");
+                if (undefined === $.cookie("messages"+index)) {
+                    $.cookie("messages"+index, 1);
+                } else {
+                    $.cookie("messages"+index, parseInt($.cookie("messages"+index))+1);
+                }
+                $.cookie("homieMessage"+index+"-"+$.cookie("messages"+index), $("#message_input").val());
+                $("#homies .info").after('<p class="indication" style="display: none;">Message was sent!</p>');
+            }
 			$(".indication").slideDown();
 			
 			setTimeout(function(){ 
@@ -46,10 +58,10 @@ $.getJSON("users.json", function(data) {
         var user = data[i][0].user;
         var username = user.name.first.capitalize() + " " +  user.name.last[0].capitalize() + ".";
         var html = $("<li></li>");
-        var link = $("<a href='#' title='" + username + "' class='normal_text'></a>");
+        var link = $("<a href='javascript:void(0);' onclick='profile(" + i + ")' title='" + username + "' class='normal_text'></a>");
 
         if ("homies" === $.cookie("homie"+i)) {
-            link.append('<a href="javascript:void(0);" onclick="message(' + i + ')"><img src="images/envelope_white.png" alt="envelope" class="envelope" width="35" style="opacity: .1" />');
+            html.append('<a href="javascript:void(0);" onclick="message(' + i + ')"><img src="images/envelope_white.png" alt="envelope" class="envelope" width="35" style="opacity: .1" />');
         }
         
         link.append("<img class='user_image' src='" + user.picture + "' alt='user' />");
@@ -95,6 +107,15 @@ var message = function(index) {
         $("#message_input").val("");
     });
     
+    var numMessages = parseInt($.cookie("messages"+index));
+    for(var i = 0; i < numMessages; i++) {
+        var oldMessage = $('<li></li>');
+        // append stuff to oldMessage if you need it. all messages will
+        // be sent by user so you can probably just pull in user pic
+        oldMessage.append($.cookie('homieMessage'+index+'-'+(i+1)));
+        $("#previous_messages").append(oldMessage);
+    }
+    
     var popupHeight = 400;
     var offset = 50;
     var position = "center top+" + offset;
@@ -110,5 +131,6 @@ var message = function(index) {
         my: "center top+" + offset,
         of: "#controls",
     });
+    $("#message_popup").data("user", index);
 }
 </script>
