@@ -35,7 +35,11 @@
     $(document).ready(function() {
         
         var pics = $.cookie("profile_pictures").split(",");
-        for(var p=0; p<pics.length-1; p++) {
+        var pics_select_number = 5;
+        if (pics.length-1<5) {
+            pics_select_number = pics.length-1;
+        }
+        for(var p=0; p<pics_select_number; p++) {
             var html = '<option data-img-src="'+pics[p]+'" value="'+p+'">'+p+'</option>';
             $("#picture_selector select").append(html);
         }
