@@ -268,3 +268,10 @@ ul.thumbnails.image_picker_selector li .thumbnail.selected img {
     padding: 5px 5px 10px 5px;
 	display: block;
 }
+
+#profile .ui-widget-header {
+	border: 1px solid #252730;
+	background: #3a4ca8 url("images/ui-bg_flat_75_3a4ca8_40x100.png") 50% 50% repeat-x;
+	color: #ffffff;
+	font-weight: bold;
+}
