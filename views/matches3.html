@@ -12,6 +12,24 @@
         if ($.cookie("homie1") == undefined) {
             $.cookie("homie1", "confirm");
         }
+        
+        $("#meeting_place_container").click(function() {
+            var popupHeight = 450;
+            var offset = 50;
+            var position = "center top+" + offset;
+            $("#meeting_place_popup").dialog({
+                height: "auto",
+                width: 575,
+                modal: true,
+                dialogClass: "meeting_place_popup",
+                draggable: false,
+                open: function(event, ui) { $('.ui-widget-overlay').bind('click', function(){ $("#meeting_place_popup").dialog('close'); }); },
+            }).parent()
+            .position({
+                my: "center top+" + offset,
+                of: "#controls",
+            });
+        });
     });
     
     String.prototype.capitalize = function() {
@@ -47,12 +65,17 @@
     <h1>Congrats!</h1><br>
     <h2>We matched you for <span id="match_time"></span> with...</h2>
     <ul id="match_list"></ul>
-    <br>
     <h2>We notified them already that you'll meet at 9pm:</h2>
-    <h3>
-        <em>The Green Fairy</em><br>
-        345 Nowhere St, Singapore
-    </h3><br>
+    <a href="#" class="normal_text" title="Meeting Place" id="meeting_place_container">
+        <img src="/images/pin.png" alt="pin" id="meeting_place_pin" width="30" />
+        <p id="meeting_place_name">Boulevard Restrobar</p>
+        <p id="meeting_place_address">28 Maxwell Rd, Singapore</p>
+    </a>
     <h2>Go get ready!</h2><br>
     <p class="info">Canned response. <a href="index.html?page=matches4">Jump to see the post-meetup review</a>.</p>
+    
+    <div id="meeting_place_popup" style="display: none">
+        <iframe width="550" height="450" frameborder="0" style="border:0"
+        src="https://www.google.com/maps/embed/v1/place?q=28%20Maxwell%20Rd%20Singapore%20069120&key=AIzaSyAEjkhq1onOl0MgONlLqxj3SeJb0dpcO1s"></iframe>
+    </div>
 </div>
