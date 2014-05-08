@@ -15,6 +15,22 @@ body, .normal_text {
 	font-family: "Varela Round", Tahoma, "Gotham-Book", sans-serif;
 }
 
+:focus {
+	outline:none;
+}
+::-moz-focus-inner {
+	border:0;
+}
+button::-moz-focus-inner {
+  border: 0;
+}
+
+@-moz-document url-prefix() { 
+  	h2,h3 { 
+		font-weight: 400;
+	}
+}
+
 b {
 	font-family: Oxygen, Tahoma, "Gotham-Book", sans-serif;
 }
@@ -189,7 +205,6 @@ ul, ul li {
 }
 
 #main_navigation li {
-	margin-bottom: 5px;
 }
 
 #main_navigation li a {

@@ -207,6 +207,15 @@ ul.thumbnails.image_picker_selector li .thumbnail.selected img {
 	border: none;
 }
 
+@-moz-document url-prefix() { 
+  	#profile_like_button {
+		font-size: 40pt;
+		line-height: 35pt;
+		padding-bottom: 5px;
+		font-weight: 700;
+	}
+}
+
 #profile_like_button:hover {
 	background: #ccc;
 }
