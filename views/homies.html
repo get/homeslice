@@ -28,6 +28,9 @@
                     $.cookie("messages"+index, parseInt($.cookie("messages"+index))+1);
                 }
                 $.cookie("homieMessage"+index+"-"+$.cookie("messages"+index), $("#message_input").val());
+                var d = new Date();
+                var n = d.getTime();
+                $.cookie("homieMessage"+index+"-"+$.cookie("messages"+index)+"-time", n);
                 $("#homies .info").after('<p class="indication" style="display: none;">Message was sent!</p>');
             }
 			$(".indication").slideDown();
@@ -107,6 +110,7 @@ var message = function(index) {
         $("#message_input").val("");
     });
     
+    $("#previous_messages").html("");
     var numMessages = parseInt($.cookie("messages"+index));
     for(var i = 0; i < numMessages; i++) {
         var oldMessage = $('<li></li>');
@@ -114,6 +118,8 @@ var message = function(index) {
         // be sent by user so you can probably just pull in user pic
         oldMessage.append($.cookie('homieMessage'+index+'-'+(i+1)));
         $("#previous_messages").append(oldMessage);
+        // Date's getTime()
+        var sentTime = $.cookie("homieMessage"+index+"-"+(i+1)+"-time");
     }
     
     var popupHeight = 400;
