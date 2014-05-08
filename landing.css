@@ -72,3 +72,10 @@ header {
 	border-bottom: 1px solid #bcbcbe;
 	border-right: 1px solid #bcbcbe;
 }
+#canned_facebook {
+    width:100%;
+    text-align: center;
+    margin-top: 8px;
+	font-family: "Varela Round", Tahoma, "Gotham-Book", sans-serif;
+    color: #3a4ca8;
+}

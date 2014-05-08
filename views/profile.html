@@ -36,7 +36,7 @@
         
         var pics = $.cookie("profile_pictures").split(",");
         var pics_select_number = 5;
-        if (pics.length-1<5) {
+        if (pics.length<5) {
             pics_select_number = pics.length-1;
         }
         for(var p=0; p<pics_select_number; p++) {

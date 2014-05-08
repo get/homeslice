@@ -18,6 +18,7 @@
 		<a href="#" title="Login with Facebook" id="login_button"></a>
 	</div>
 </section>
+<div id="canned_facebook"><a href="javascript:void(0);" onclick="cannedFacebook()">Login with canned Facebook</a>.</div>
 
 <script>
 // Facebook login stuff
@@ -78,5 +79,11 @@
           return false;
       });
 
-      };
+    };
+    
+    function cannedFacebook() {
+        $.cookie("user_name", "Claire T.");
+        $.cookie("profile_pictures", "images/user1.jpg,/images/user2.jpg,/images/user3.jpg,/images/user4.jpg,/images/user5.jpg");
+        checkCookies();
+    }
 </script>
