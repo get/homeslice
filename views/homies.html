@@ -8,6 +8,7 @@
 </div>
 
 <div id="message_popup" style="display: none">
+    <ul id="previous_messages"></ul>
     <form action="#" method="post">
 		<div id="message_label_container" for="message_input"><img id="user_picture"><label id="message_receiver"></label></div>
 		<textarea id="message_input"></textarea>
@@ -105,6 +106,15 @@ var message = function(index) {
 		$("#user_picture").attr("alt", username);
         $("#message_input").val("");
     });
+    
+    var numMessages = parseInt($.cookie("messages"+index));
+    for(var i = 0; i < numMessages; i++) {
+        var oldMessage = $('<li></li>');
+        // append stuff to oldMessage if you need it. all messages will
+        // be sent by user so you can probably just pull in user pic
+        oldMessage.append($.cookie('homieMessage'+index+'-'+(i+1)));
+        $("#previous_messages").append(oldMessage);
+    }
     
     var popupHeight = 400;
     var offset = 50;
