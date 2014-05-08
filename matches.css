@@ -44,6 +44,10 @@
 	margin: 0;
 	background: #fff url(/images/arrow.png) no-repeat 90% 55%;
 	font-family: "Signika", sans-serif;
+	
+	-moz-appearance: none;
+	text-indent: 0.01px;
+    text-overflow: '';
 }
 
 #match_confirm_button {

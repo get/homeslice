@@ -117,7 +117,7 @@
 }
 
 #state_filter {
-	width: 65px;
+	width: 68px;
 	border-radius: 0px 20px 20px 0px; 
 	-moz-border-radius:  0px 20px 20px 0px; 
 	-webkit-border-radius: 0px 20px 20px 0px;
@@ -125,6 +125,10 @@
 	position: relative;
 	border-left: 1px solid #ddd;
 	background: #fff url(/images/arrow.png) no-repeat 85% 55%;
+	
+	-moz-appearance: none;
+	text-indent: 0.01px;
+    text-overflow: '';
 }
 
 #reset_filters {
