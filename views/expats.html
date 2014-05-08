@@ -9,7 +9,7 @@
 	
 	<div id="filter_users">
 	  <p>Filter by: <input type="text" value="home town" id="filter_users_input" onfocus="if(this.value == 'home town') {this.value = '';}" onblur="if (this.value == '') {this.value = 'home town';}" /><select id="state_filter" name="state">
-	      <option value="">state</option>
+	      <option value="" id="default_state_value">state</option>
 	    </select>
 	    <a href="#" title="Reset Filters" id="reset_filters" class="normal_text">reset filter</a>
 	  </p>
@@ -58,7 +58,6 @@ $(document).ready(function(){
     }
     
     function filter_by(state, hometown) {
-      console.log(state, hometown)
       $.each($(".expat"), function() {
         if($(this).is(":visible")) {
           if(state && !isIn($(".hometown", this).text().split(",")[1], state)) $(this).hide();
@@ -88,8 +87,8 @@ $(document).ready(function(){
     }    
     
     $("#reset_filters").click(function() {
-      $("#state_filter option").attr("selected", "");
-      $("#state_filter option:first-child").attr("selected", "selected");
+      $("#state_filter option").removeAttr("selected");
+      $("#default_state_value").attr("selected", "selected");
       $("#filter_users_input").val("home town");
       filter_by($("#state_filter option:selected").val(), $("#filter_users_input").val());
       return false;
