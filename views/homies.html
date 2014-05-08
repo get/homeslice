@@ -94,23 +94,21 @@ $.getJSON("users.json", function(data) {
         var username = user.name.first.capitalize() + " " +  user.name.last[0].capitalize() + ".";
         var html = $("<li></li>");
         
-        html.append('<button type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only ui-dialog-titlebar-close" role="button" aria-disabled="false" title="close"><span id="remove_homie_button' + i + '" class="ui-button-icon-primary ui-icon ui-icon-closethick"></span><span class="ui-button-text">close</span></button>');
+        html.append('<button id="remove_homie_button' + i + '" type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only ui-dialog-titlebar-close" role="button" aria-disabled="false" title="close"><span id="remove_homie_button' + i + '" class="ui-button-icon-primary ui-icon ui-icon-closethick"></span><span class="ui-button-text">close</span></button>');
         
         var link = $("<a href='javascript:void(0);' onclick='profile(" + i + ")' title='" + username + "' class='normal_text'></a>");
-
-        if ("homies" === $.cookie("homie"+i)) {
-            html.append('<a href="javascript:void(0);" onclick="message(' + i + ')"><img src="images/envelope_white.png" alt="envelope" class="envelope" width="35" style="opacity: .1" />');
-        }
         
         link.append("<img class='user_image' src='" + user.picture + "' alt='user' />");
         link.append("<p class='user_name'>" + username + "</p>");
         
-        if ("pending" === $.cookie("homie"+i)) {
-            link.append("<button class='homie_control pending_homie_button' id='pending_homie_button" + i + "''>PENDING</button>");
+        if ("homies" === $.cookie("homie"+i)) {
+            html.append('<a href="javascript:void(0);" onclick="message(' + i + ')"><img src="images/envelope_white.png" alt="envelope" class="envelope" width="35" style="opacity: .1" />');
+        } else if ("pending" === $.cookie("homie"+i)) {
+            html.append("<button class='homie_control pending_homie_button' id='pending_homie_button" + i + "''>PENDING</button>");
         } else if (undefined === $.cookie("homie"+i)) {
-            link.append("<button class='homie_control add_homie_button' id='add_homie_button" + i + "''>ADD</button>");
+            html.append("<button class='homie_control add_homie_button' id='add_homie_button" + i + "''>ADD</button>");
         }  else if ("confirm" === $.cookie("homie"+i)) {
-            link.append("<button class='homie_control confirm_homie_button' id='confirm_homie_button" + i + "''>CONFIRM</button>");
+            html.append("<button class='homie_control confirm_homie_button' id='confirm_homie_button" + i + "''>CONFIRM</button>");
         }
         
         html.append(link);
@@ -143,6 +141,11 @@ $.getJSON("users.json", function(data) {
                 var username = user.name.first.capitalize() + " " +  user.name.last[0].capitalize() + ".";
                 $("#remove_homie_name").html(username);
             });
+            
+            var popupHeight = 140;
+            var offset = 165;
+            var position = "center top+" + offset;
+            
             $( "#remove_homie_popup" ).dialog({
                 resizable: false,
                 height: 140,
@@ -157,6 +160,10 @@ $.getJSON("users.json", function(data) {
                         $( this ).dialog( "close" );
                     }
                 }
+            }).parent()
+            .position({
+                my: "center top+" + offset,
+                of: "#controls",
             });
         });
 	}
