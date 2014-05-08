@@ -6,20 +6,9 @@
 <meta name="viewport" content="width=device-width">
 <meta name="viewport" content="initial-scale=1, maximum-scale=1">
 <meta name="apple-mobile-web-app-capable" content="yes" /> 
-<link href='http://fonts.googleapis.com/css?family=Varela+Round|Signika:400,300|Oxygen:400,700' rel='stylesheet' type='text/css'>
-<link rel="stylesheet" type="text/css" href="jquery-ui-1.10.4.custom.css" />
-<link rel="stylesheet" type="text/css" href="main.css" />
-<link rel="stylesheet" type="text/css" href="profile.css" />
-<link rel="stylesheet" type="text/css" href="messages.css" />
-<link rel="stylesheet" type="text/css" href="matches.css" />
-<link rel="stylesheet" type="text/css" href="expats.css" />
-<link rel="stylesheet" type="text/css" href="homies.css" />
-<link rel="stylesheet" type="text/css" href="help.css" />
+<link rel="stylesheet" type="text/css" href="landing.css" />
 <script src="javascript/jquery.js"></script>
-<script src="javascript/jquery-ui.js"></script>
 <script src="javascript/jquery.cookie.js"></script>
-<script src="javascript/jquery.sticky.js"></script>
-<script src="javascript/timeago.js"></script>
 <script type="text/javascript">
 $.extend({
     getUrlVars : function() {
@@ -39,9 +28,7 @@ $.extend({
 });
 
 $(document).ready(function() {
-    $("#user_thumb").attr("style", "background: url(images/user" + $.cookie("profile_pic") + "_small.jpg) no-repeat center center");
-    $('#content').load('views/' + $.getUrlVar('page').replace("/", "").replace("#", "") + '.html');
-	$('.' + $.getUrlVar('page').replace("/", "").replace("#", "") + '_page_link').addClass("selected");
+    $('#content').load('views/landing.html');
 });
 </script>
 <script type="text/javascript">
@@ -56,7 +43,7 @@ createGridder = function() {
 var gOverride = {
   urlBase: 'http://gridder.andreehansson.se/releases/latest/',
   gColor: '#EEEEEE',
-  gColumns:12,
+  gColumns: 16,
   gOpacity: 0.35,
   gWidth: 10,
   pColor: '#C0C0C0',
@@ -71,181 +58,19 @@ var gOverride = {
   size: 960
 };
 </script>
-<script type="text/javascript">
-    
-var profile = function(index) {
-    var title = "user"+index;
-    
-    if ($.cookie(title) == "liked") {
-        $("#profile_like_button").addClass("depressed").html("&#9733;");
-    } else {
-		$("#profile_like_button").removeClass("depressed").html("&#9734;");
-	}
-    
-    if (title != "user-1") {
-        $.getJSON("users.json", function(data) {
-            var user = data[index][0].user;
-            var username = user.name.first.capitalize() + " " +  user.name.last[0].capitalize() + ".";
-            var city = user.location.city.capitalize() + ", " + user.location.state;
-            
-            $("#profile_pic").prop("src", user.picture);
-            $("#profile_name").text(username);
-            $("#profile_from").text(city);
-        });
-    }
-    
-    var popupHeight = 600;
-    var offset = $(window).height()/2 - 64.5 - popupHeight/2 - $(window).height()/40 + $(window).scrollTop();
-    var position = "center top+" + offset;
-    $("#profile_popup").dialog({
-        height: popupHeight,
-        width: 575,
-        modal: true,
-        dialogClass: "profile_popup",
-        draggable: false,
-        open: function(event, ui) { $('.ui-widget-overlay').bind('click', function(){ $("#profile_popup").dialog('close'); }); },
-    }).parent()
-    .position({
-        my: "center top+" + offset,
-        of: "#controls",
-    });
-    
-    $("#profile_popup").data("user", title);
-}
-</script>
 </head>
 
 <body onload="//createGridder()">
-	
-    <div id="profile_popup" style="display: none">
-        <div id="profile_info">
-            <img id="profile_pic" src="http://img2.wikia.nocookie.net/__cb20140129024919/rickandmorty/images/b/bb/Rickpic.png" alt="Rick S.">
-            <h1 id="profile_name">Rick S.</h1>
-            <h3 id="profile_from_title">originally<br>from</h3>
-            <h2 id="profile_from">Earth Dimension C-137</h2>
-            <button id="profile_like_button">&#9734;</button>
-        </div>
-        <div id="profile_likes_div">
-            <h2 id="likes_header">Likes</h2>
-            <ul id="profile_likes">
-                <li class ="like_item"><img class="like_img" src="http://www.hudsonfla.com/hstusflag.jpg"><h3 id="like_text">The United States</h3></li>
-                <li class ="like_item"><img class="like_img" src="http://winteriscoming.net/wp-content/uploads/2011/06/Game_of_Thrones_title_card.jpg"><h3 id="like_text">Game of Thrones</h3></li>
-                <li class ="like_item"><img class="like_img" src="http://upload.wikimedia.org/wikipedia/en/3/32/Rick_and_Morty_opening_credits.jpeg"><h3 id="like_text">Rick and Morty</h3></li>
-                <li class ="like_item"><img class="like_img" src="http://upload.wikimedia.org/wikipedia/commons/thumb/c/c4/Wizarding_World_of_Harry_Potter_Castle.jpg/800px-Wizarding_World_of_Harry_Potter_Castle.jpg"><h3 id="like_text">Harry Potter World</h3></li>
-                <li class ="like_item"><img class="like_img" src="http://upload.wikimedia.org/wikipedia/en/3/3b/Dark_Side_of_the_Moon.png"><h3 id="like_text">Pink Floyd</h3></li>
-                <li class ="like_item"><img class="like_img" src="http://upload.wikimedia.org/wikipedia/commons/thumb/c/c0/Pizza_med_gorgonzola%2C_spinat_og_bacon%2C_March_2010.jpg/800px-Pizza_med_gorgonzola%2C_spinat_og_bacon%2C_March_2010.jpg"><h3 id="like_text">Pizza<br></h3></li>
-                <li class ="like_item"><img class="like_img" src="http://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Nicolas_Cage_2011_CC.jpg/473px-Nicolas_Cage_2011_CC.jpg"><h3 id="like_text">Nicolas Cage</h3></li>
-                <li class ="like_item"><img class="like_img" src="http://www.nashvillescene.com/imager/why-dont-you-like-me/b/original/1483632/bc26/nickelback_point.jpg"><h3 id="like_text">Nickleback</h3></li>
-            </ul>
-        </div>
-        
-        <script type="text/javascript">
-            $("#profile_like_button").click(function(evt) {
-				var user_id = parseInt($("#profile_popup").data("user").replace("user", "")) + 1;
-				
-				var cookieValue = $.cookie($("#profile_popup").data("user"));
-				
-				if(cookieValue == "liked") {
-					$("#profile_like_button").html("&#9734;");
-					$(this).removeClass("depressed");
-					$(".expat:nth-child("+user_id+") .triangle-topright").remove();
-					$.cookie($("#profile_popup").data("user"), "");
-				} else {
-					$("#profile_like_button").html("&#9733;");
-					$(this).addClass("depressed");
-					$(".expat:nth-child("+user_id+") a").prepend("<div class='triangle-topright'><img src='images/star.png' alt='' class='star' /></div>");
-					$.cookie($("#profile_popup").data("user"), "liked");
-				}				
-            });
-        </script>
-    </div>
-    
-	<section id="container">
 
-		<section id="main_sidebar">
-			<a id="logo" href="?page=expats" title="HomeSlice"><img src="images/logo_small_no_flag.png" alt="HomeSlice" /></a>
-			
-			<ul id="main_navigation">
-				<li><a href="?page=expats" title="Expats" class="expats_page_link">Expats</a></li>
-				<li><a href="?page=homies" title="Homies" class="homies_page_link">Homies</a></li>
-				<li><a href="?page=help" title="Help" class="help_page_link">Help</a></li>
-			</ul>
-		</section>
+	<header>
+		<div class="center">
+			<a id="logo" href="#" title="HomeSlice"><img src="images/logo_small.png" alt="HomeSlice" /></a>
+		</div>
+	</header>
 	
-		<section id="main_content">
-			<div id="controls">
-				
-				<a href="?page=profile" title="Profile" class="profile_link">
-					<div id="user_small_thumb_container">
-						<div id="user_thumb" style="background: url(images/user1_small.jpg) no-repeat center center"></div>
-					</div>
-					<p class="username">Claire</p>
-				</a>
-				
-				<a href="?page=homies" title="Messages" class="messages_link">
-					<img src="images/envelope_white.png" alt="envelope" width="35" style="opacity: .1" />
-				</a>
-
-			</div>
-			<div id="content">
-				
-			</div>
-            
-		</section>
+	<div id="content"></div>	
 	
-		<footer>
-			<img src="images/flag_light.png" alt="flag" />
-			<p>MIT 6.813 Class Project. &copy; <span id="copyrightyear"></span></p>
-			<script>$('#copyrightyear').text(new Date().getFullYear())</script>
-		</footer>
-	
-	</section>
-
-<script type="text/javascript">
-$(function() {
-
-	switch($.cookie("match_progress")) {
-		case "2":
-			$("#controls").append('<button class="control_button" id="matches_requested_pending_button">Match requested, pending</button>');
-			break;
-		case "3":
-			$("#controls").append('<button class="control_button" id="matches_ready_button">Matches ready!</button>');
-			break;
-		case "4":
-			$("#controls").append('<button class="control_button" id="post_hangout_button">Tell us how your hangout went</button>');
-			break;
-		case "1":
-		default:
-			$("#controls").append('<button class="control_button" id="get_matched_button">Get Matched</button>');
-			break;
-	}
-});
-    
-$(function() {
-    $("#get_matched_button").click(function(evt) {
-        window.location.href = "index.html?page=matches1";
-    });
-    
-    
-    $("#matches_requested_pending_button").click(function(evt) {
-        if ($.getUrlVar('page') != "matches2") {
-            window.location.href = "index.html?page=matches2";
-        }
-    });
-    
-    
-    $("#matches_ready_button").click(function(evt) {
-        if ($.getUrlVar('page') != "matches3") {
-            window.location.href = "index.html?page=matches3";
-        }
-    });
-    
-    
-    $("#post_hangout_button").click(function(evt) {
-        window.location.href = "index.html?page=matches4";
-    });
-});
-</script>
+	<footer></footer>
 
 </body>
 

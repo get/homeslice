@@ -9,7 +9,7 @@
 //        $("#match_again_button").click(function(evt) {
 //            $.cookie("match_progress", "1");
 //            $.removeCookie("match_time");
-//            window.location.href = "index.html?page=matches1";
+//            window.location.href = "?page=matches1";
 //        });
 //    });
     
@@ -51,7 +51,7 @@
                 var index = evt.target.id.match(/[0-9 -()+]+$/)[0];
                 
                 $.cookie("homie"+index, "pending");
-                window.location.href = "index.html?page=matches4";
+                window.location.href = "?page=matches4";
             });
 
             $("#confirm_homie_button"+i).click(function(evt) {
@@ -60,7 +60,7 @@
                 console.log(index);
                 
                 $.cookie("homie"+index, "homies");
-                window.location.href = "index.html?page=matches4";
+                window.location.href = "?page=matches4";
             });
         }
     });

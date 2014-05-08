@@ -1,7 +1,7 @@
 <script type="text/javascript">
     $(document).ready(function() {
         if ($.cookie("match_progress") === "3") {
-            window.location.href = "index.html?page=matches3";
+            window.location.href = "?page=matches3";
         } else {
             $.cookie("match_progress", "3")
         }
@@ -12,5 +12,5 @@
     <h1>Hold on!</h1><br>
     <h2>We've got a team of kittens working on your matches!</h2>
     <img id="cat_drawing" src="images/cats_drawing.png">
-    <p class="info">Canned response. <a href="index.html?page=matches3">Jump to matches</a>.</p><br>
+    <p class="info">Canned response. <a href="?page=matches3">Jump to matches</a>.</p><br>
 </div>

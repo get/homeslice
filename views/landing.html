@@ -4,17 +4,78 @@
         if (matchProgress == undefined) {
             $.cookie("profile_pic", "1");
             $.cookie("match_progress", "1")
-            window.location.href = "index.html?page=profile";
+            window.location.href = "indexf.html?page=profile";
         } else if (matchProgress === "3" || matchProgress === "4") {
-            window.location.href = "index.html?page=matches"+matchProgress;
+            window.location.href = "indexf.html?page=matches"+matchProgress;
         } else {
-            window.location.href = "index.html?page=expats";
+            window.location.href = "indexf.html?page=expats";
         }
     }
 </script>
 
 <section id="panorama">
 	<div id="header_text">
-		<a href="javascript:void(0);" onclick="checkCookies()" title="Login with Facebook" id="login_button"></a>
+		<a href="#" title="Login with Facebook" id="login_button"></a>
 	</div>
 </section>
+
+<script>
+// Facebook login stuff
+// Load the SDK asynchronously
+  (function(d, s, id) {
+    var js, fjs = d.getElementsByTagName(s)[0];
+    if (d.getElementById(id)) return;
+    js = d.createElement(s); js.id = id;
+    js.src = "//connect.facebook.net/en_US/sdk.js";
+    fjs.parentNode.insertBefore(js, fjs);
+  }(document, 'script', 'facebook-jssdk'));
+  function testAPI() {
+      console.log('Welcome!  Fetching your information.... ');
+      FB.api('/me', function(response) {
+        console.log('Good to see you, ' + response.name + '.');
+        document.getElementById('status').innerHTML = 'Good to see you, ' +
+          response.name;
+      });
+    }
+    
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '697166066995816',
+        cookie     : true,  // enable cookies to allow the server to access 
+                            // the session
+        xfbml      : true,  // parse social plugins on this page
+        version    : 'v2.0' // use version 2.0
+      });
+      
+      function getProfilePics(response) {
+          FB.api("/me", {fields: "id,name,picture"}, function(response) {
+              $.cookie("user_name", response.name);
+                FB.api({
+                    method: 'fql.query',
+                    query: 'SELECT pid, src_big, src_big_height, src_big_width FROM photo WHERE aid IN ( SELECT aid FROM album WHERE owner="' + response.id + '" AND name = "Profile Pictures")'
+                },function(data) {
+                    var urls = "";
+                    for(var i in data) {
+                        urls += data[i].src_big + ",";
+                    }
+                    $.cookie("profile_pictures", urls);
+                    checkCookies();
+                });
+            });
+      }
+      
+      FB.getLoginStatus(function(response) {
+          if(response.status == "connected") {
+              checkCookies();
+          }
+      });
+      
+      $("#login_button").click(function() {
+          FB.login(function(response){
+            getProfilePics(response);
+          }, {scope: 'email,user_photos'});
+          return false;
+      });
+
+      };
+</script>

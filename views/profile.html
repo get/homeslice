@@ -5,11 +5,6 @@
     
     <div id="picture_selector">
         <select class="image-picker show-html">
-            <option data-img-src="images/user1.jpg" value="1">1</option>
-            <option data-img-src="images/user2.jpg" value="2">2</option>
-            <option data-img-src="images/user3.jpg" value="3">3</option>
-            <option data-img-src="images/user4.jpg" value="4">4</option>
-            <option data-img-src="images/user5.jpg" value="5">5</option>
         </select>
     </div>
     
@@ -38,13 +33,24 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
-        $.cookie("username", "Claire");
+        
+        var pics = $.cookie("profile_pictures").split(",");
+        for(var p=0; p<pics.length-1; p++) {
+            var html = '<option data-img-src="'+pics[p]+'" value="'+p+'">'+p+'</option>';
+            $("#picture_selector select").append(html);
+        }
+        
+        if($.cookie("profile_pic") == null) {
+            $.cookie("profile_pic", "1");
+        }
+        $.cookie("profile_pic", "1");
+        
         // setup image-picker
         $("select").val($.cookie("profile_pic"));
-        $("select").imagepicker({
+        $("#picture_selector select").imagepicker({
             changed: function(previous, current) {
                 $.cookie("profile_pic", current);
-                $("#user_thumb").attr("style", "background: url(images/user" + $.cookie("profile_pic") + "_small.jpg) no-repeat center center");
+                $("#user_thumb").attr("src", pics[$.cookie("profile_pic")]);
             },
         });
         
