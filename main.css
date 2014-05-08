@@ -25,6 +25,12 @@ button::-moz-focus-inner {
   border: 0;
 }
 
+@-moz-document url-prefix() { 
+  	h2,h3 { 
+		font-weight: 400;
+	}
+}
+
 b {
 	font-family: Oxygen, Tahoma, "Gotham-Book", sans-serif;
 }
