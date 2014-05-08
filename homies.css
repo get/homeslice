@@ -197,3 +197,16 @@
 	padding-top: 9px;
 	float: right;
 }
+
+#homies .ui-dialog-titlebar-close {
+    opacity: 0.15;
+    float :left;
+    width: 20px;
+    height: 20px;
+    margin-top: -17px;
+    margin-left: -17px;
+}
+
+#homies .ui-dialog-titlebar-close:hover {
+    opacity: 0.5;
+}

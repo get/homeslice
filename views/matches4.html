@@ -31,6 +31,9 @@
             
             if ($.cookie("homie"+i) == undefined) {
                 html.append("<button class='homie_control add_homie_button' id='add_homie_button" + i + "''>ADD HOMIE</button>");
+            } else if ($.cookie("homie"+i) === "removed") {
+                html.append("<button class='homie_control add_homie_button' id='add_homie_button" + i + "''>ADD HOMIE</button>");
+                $.removeCookie("homie"+i);
             } else if ($.cookie("homie"+i) === "confirm") {
                 html.append("<button class='homie_control confirm_homie_button' id='confirm_homie_button" + i + "''>CONFIRM HOMIE</button>");
             } else if ($.cookie("homie"+i) === "pending") {

@@ -2,7 +2,7 @@
     var checkCookies = function() {
         var matchProgress = $.cookie("match_progress");
         if (matchProgress == undefined) {
-            $.cookie("profile_pic", "1");
+            $.cookie("profile_pic", "0");
             $.cookie("match_progress", "1")
             window.location.href = "indexf.html?page=profile";
         } else if (matchProgress === "3" || matchProgress === "4") {
@@ -48,8 +48,9 @@
       });
       
       function getProfilePics(response) {
-          FB.api("/me", {fields: "id,name,picture"}, function(response) {
-              $.cookie("user_name", response.name);
+          FB.api("/me", {fields: "id,first_name,last_name,picture"}, function(response) {
+              var name = response.first_name + " " + response.last_name[0] + ".";
+              $.cookie("user_name", name);
                 FB.api({
                     method: 'fql.query',
                     query: 'SELECT pid, src_big, src_big_height, src_big_width FROM photo WHERE aid IN ( SELECT aid FROM album WHERE owner="' + response.id + '" AND name = "Profile Pictures")'

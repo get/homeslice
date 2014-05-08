@@ -7,6 +7,11 @@
 	</ul>
 </div>
 
+<div id="remove_homie_popup" title="Remove Homie Popup" style="display: none">
+ <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>
+    Are you sure you want to remove <span id="remove_homie_name">this</span> from your homies? You will not be able to add them again.</p>
+</div>
+
 <div id="message_popup" style="display: none">
     <form action="#" method="post">
 		<div id="message_label_container" for="message_input"><img id="user_picture"><label id="message_receiver"></label></div>
@@ -17,7 +22,7 @@
     <script type="text/javascript">
         $("#send_message").click(function(evt) {
             if (!$("#message_input").val()) {
-                $("#previous_messages").before('<p class="error" style="display: none;">Empty message. Nothing was sent!</p>');
+                $("#message_popup form").before('<p class="error" style="display: none;">Empty message. Nothing was sent!</p>');
                 
                 $(".error").slideDown();
                 setTimeout(function(){ 
@@ -36,11 +41,12 @@
                 messagehtml.append("<p>" + $("#message_input").val()+"</p>");
                 $("#previous_messages").prepend(messagehtml);
                 */
+                var pic = $.cookie("profile_pictures").split(",")[$.cookie("profile_pic")];
                 var oldMessage = $('<li></li>');
                 var sentTime = new Date();
                 // append stuff to oldMessage if you need it. all messages will
                 // be sent by user so you can probably just pull in user pic
-                oldMessage.append("<div><img src='" + "images/user" + $.cookie("profile_pic") + "_small.jpg" + "' alt='profile pic' class='profile_picture' /><p class='message_content'><b>"+ $.cookie("username") +"</b>: " + $("#message_input").val() + "</p><p class='timeago'>"+jQuery.timeago(sentTime)+"</p></div>");
+                oldMessage.append("<div><img src='" + pic + "' alt='profile pic' class='profile_picture' /><p class='message_content'><b>"+ $.cookie("user_name") +"</b>: " + $("#message_input").val() + "</p><p class='timeago'>"+jQuery.timeago(sentTime)+"</p></div>");
                 $("#previous_messages").prepend(oldMessage);
                 
                 var index = $("#message_popup").data("user");
@@ -81,9 +87,15 @@ $.getJSON("users.json", function(data) {
         return;
     }
 	for(var i=0; i<3; i++) {
+        if ("removed" === $.cookie("homie"+i)) {
+            continue;
+        }
         var user = data[i][0].user;
         var username = user.name.first.capitalize() + " " +  user.name.last[0].capitalize() + ".";
         var html = $("<li></li>");
+        
+        html.append('<button type="button" class="ui-button ui-widget ui-state-default ui-corner-all ui-button-icon-only ui-dialog-titlebar-close" role="button" aria-disabled="false" title="close"><span id="remove_homie_button' + i + '" class="ui-button-icon-primary ui-icon ui-icon-closethick"></span><span class="ui-button-text">close</span></button>');
+        
         var link = $("<a href='javascript:void(0);' onclick='profile(" + i + ")' title='" + username + "' class='normal_text'></a>");
 
         if ("homies" === $.cookie("homie"+i)) {
@@ -120,6 +132,33 @@ $.getJSON("users.json", function(data) {
             $.cookie("homie"+index, "homies");
             window.location.href = "?page=homies";
         });
+        
+        $("#remove_homie_button"+i).click(function(evt) {
+            var intRegex = /[0-9 -()+]+$/;
+            var index = evt.target.id.match(/[0-9 -()+]+$/)[0];
+            var homieStatus = $.cookie("homie"+index);
+            
+            $.getJSON("users.json", function(data) {
+                var user = data[index][0].user;
+                var username = user.name.first.capitalize() + " " +  user.name.last[0].capitalize() + ".";
+                $("#remove_homie_name").html(username);
+            });
+            $( "#remove_homie_popup" ).dialog({
+                resizable: false,
+                height: 140,
+                modal: true,
+                buttons: {
+                    "Remove Homie": function() {
+                        $.cookie("homie"+index, "removed");
+                        $( this ).dialog( "close" );
+                        window.location.href = "?page=homies";
+                    },
+                    Cancel: function() {
+                        $( this ).dialog( "close" );
+                    }
+                }
+            });
+        });
 	}
 });
     
@@ -133,12 +172,13 @@ var message = function(index) {
     });
     
     var numMessages = parseInt($.cookie("messages"+index));
+    var pic = $.cookie("profile_pictures").split(",")[$.cookie("profile_pic")];
     for(var i = numMessages-1; i >= 0; i--) {
         var oldMessage = $('<li></li>');
         var sentTime = new Date($.cookie("homieMessage"+index+"-"+(i+1)+"-time"));
         // append stuff to oldMessage if you need it. all messages will
         // be sent by user so you can probably just pull in user pic
-        oldMessage.append("<div><img src='" + "images/user" + $.cookie("profile_pic") + "_small.jpg" + "' alt='profile pic' class='profile_picture' /><p class='message_content'><b>"+ $.cookie("username") +"</b>: " + $.cookie('homieMessage'+index+'-'+(i+1)) + "</p><p class='timeago'>"+jQuery.timeago(sentTime)+"</p></div>");
+        oldMessage.append("<div><img src='" + pic + "' alt='profile pic' class='profile_picture' /><p class='message_content'><b>"+ $.cookie("user_name") +"</b>: " + $.cookie('homieMessage'+index+'-'+(i+1)) + "</p><p class='timeago'>"+jQuery.timeago(sentTime)+"</p></div>");
         $("#previous_messages").append(oldMessage);
     }
     
