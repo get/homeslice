@@ -1,8 +1,6 @@
 <script src="javascript/image-picker.js"></script>
 
 <div id="profile">
-    <button id="save_profile_button">Save</button>
-    
 	<h1>Settings</h1>
     
     <div id="picture_selector">
@@ -42,7 +40,12 @@
     $(document).ready(function() {
         // setup image-picker
         $("select").val($.cookie("profile_pic"));
-        $("select").imagepicker();
+        $("select").imagepicker({
+            changed: function(previous, current) {
+                $.cookie("profile_pic", current);
+                $("#user_thumb").attr("style", "background: url(images/user" + $.cookie("profile_pic") + "_small.jpg) no-repeat center center");
+            },
+        });
         
         var j = 1;
         // setup sliders
@@ -62,18 +65,12 @@
                 max: 5,
                 step: 1,
                 range: "min",
+                change: function(event, ui) {
+                    $.cookie(event.target.id, ui.value);
+                },
             });
             
             j++;
         });
-    });
-    
-    $("#save_profile_button").click(function(evt) {
-        $.cookie("profile_pic", $("select").val());
-        $.cookie("slider1", ""+$("#slider1").slider("value"));
-        $.cookie("slider2", ""+$("#slider2").slider("value"));
-        $.cookie("slider3", ""+$("#slider3").slider("value"));
-        
-        window.location.href = "index.html?page=expats";
     });
 </script>
