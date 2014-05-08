@@ -1,7 +1,7 @@
 <div id="expats">
 	<div id="panorama_c">
 		<div id="panorama">
-			<h1>Meet other Americans in Singapore</h1>
+			<h1 id="panorama_title">Meet other Americans in Singapore</h1>
 		</div>
 	</div>
 	
@@ -23,6 +23,10 @@
 String.prototype.capitalize = function() {
     return this.charAt(0).toUpperCase() + this.slice(1);
 }
+
+Number.prototype.clamp = function(min, max) {
+  return Math.min(Math.max(this, min), max);
+};
 
 $.getJSON("users.json", function(data) {
 	for(var i=0; i<data.length; i++) {
@@ -47,9 +51,9 @@ $.getJSON("users.json", function(data) {
 	}
 });
 
-$(document).ready(function(){
-    $("#panorama_c").sticky( {topSpacing:0} );
+
     
+$(document).ready(function(){
     var states = ['AK', 'AL', 'AR', 'AZ', 'CA', 'CO', 'CT', 'DC', 'DE', 'FL', 'GA', 'HI', 'IA', 'ID', 'IL', 'IN', 'KS', 'KY', 'LA', 'MA', 'MD', 'ME', 'MI', 'MN', 'MO', 'MS', 'MT', 'NC', 'ND', 'NE', 'NH', 'NJ', 'NM', 'NV', 'NY', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VA', 'VT', 'WA', 'WI', 'WV', 'WY'];
     for(var i in states) $("#state_filter").append("<option value='"+states[i]+"'>"+states[i]+"</option>");
     
@@ -101,5 +105,16 @@ $(document).ready(function(){
     $("#state_filter").change(function() {
       filter_by($("#state_filter option:selected").val(), $("#filter_users_input").val());
     });
+    
+    // begin code to make header sticky
+    $("#panorama_c").sticky( {topSpacing:-75} );
+    
+    $(window).scroll(function() {
+        var scrolled = $(window).scrollTop();
+        var offset = ((scrolled-99)*1.1).clamp(42, 78);
+        $('#panorama_title').css('padding-top', offset);
+        console.log($("#panorama_title").css("padding-top"));
+    });
+    // end code to make header sticky
 });
 </script>
