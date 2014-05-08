@@ -54,6 +54,15 @@
             changed: function(previous, current) {
                 $.cookie("profile_pic", current);
                 $("#user_thumb").attr("src", pics[$.cookie("profile_pic")]);
+                
+                $("#profile .indication").remove();
+                $("#about_you").after('<p class="indication" style="display: none; text-align:center;">Saved!</p>');
+                $("#profile .indication").slideDown();
+                setTimeout(function(){ 
+                    $("#profile .indication").slideUp(400, function() {
+                        $(this).remove();
+                    }); 
+                },1000);
             },
         });
         
@@ -77,6 +86,14 @@
                 range: "min",
                 change: function(event, ui) {
                     $.cookie(event.target.id, ui.value);
+                    
+                    $("#about_you").after('<p class="indication" style="display: none; text-align:center;">Saved!</p>');
+                    $("#profile .indication").slideDown();
+                    setTimeout(function(){ 
+                        $("#profile .indication").slideUp(400, function() {
+                            $(this).remove();
+                        }); 
+                    },1000);
                 },
             });
             
