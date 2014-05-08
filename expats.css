@@ -82,8 +82,6 @@
 	-moz-border-radius: 2px;
 	-webkit-border-radius: 2px;
 	border-radius: 2px;
-	border-bottom: 1px solid #ddd;
-	border-right: 1px solid #ddd;
 /*    end code to make header sticky */
 }
 
@@ -97,4 +95,40 @@
 	z-index: 5;
 	top: -36px;
 	right: 3px;
+}
+
+#filter_users {
+	padding-left: 20px;
+}
+
+#filter_users_input, #state_filter {
+	padding: 10px;
+	resize: none;
+	outline: 0px;
+	font-style: italic;
+	-webkit-appearance: none;
+	border-radius: 20px 0px 0px 20px; 
+	-moz-border-radius: 20px 0px 0px 20px; 
+	-webkit-border-radius: 20px 0px 0px 20px;
+	width: 150px;
+	color: #999;
+	border: none;
+	margin: 0;
+}
+
+#state_filter {
+	width: 65px;
+	border-radius: 0px 20px 20px 0px; 
+	-moz-border-radius:  0px 20px 20px 0px; 
+	-webkit-border-radius: 0px 20px 20px 0px;
+	margin: 0; 
+	position: relative;
+	border-left: 1px solid #ddd;
+	background: #fff url(/images/arrow.png) no-repeat 85% 55%;
+}
+
+#reset_filters {
+	margin-left: 5px;
+	font-style: italic;
+	color: #999;
 }

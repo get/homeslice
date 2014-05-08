@@ -207,6 +207,10 @@ ul.thumbnails.image_picker_selector li .thumbnail.selected img {
 	border: none;
 }
 
+#profile_like_button:hover {
+	background: #ccc;
+}
+
 #profile_like_button:active, #profile_like_button.depressed {
 	/*
 	padding-top: 7px;

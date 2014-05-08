@@ -46,6 +46,7 @@ header {
 
 button {
     outline: none;
+	cursor: pointer;
 }
 
 #logo {
@@ -274,12 +275,24 @@ ul, ul li {
 	background: #59bd41;
 }
 
+#get_matched_button:hover {
+	background: #4ea739;
+}
+
 #matches_ready_button {
 	background: #3a4ca8;
 }
 
+#matches_ready_button:hover {
+	background:#303f8c;
+}
+
 #post_hangout_button {
 	background: #f16563;
+}
+
+#post_hangout_button:hover {
+	background:#d75a59;
 }
 
 footer {
