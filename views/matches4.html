@@ -41,6 +41,11 @@
 
             $("#match_list").append(html);
             
+            $(".already_homie_button").click(function() {
+                window.location = "?page=homies";
+                return false;
+            });
+            
             $("#add_homie_button"+i).click(function(evt) {
                 var intRegex = /[0-9 -()+]+$/;
                 var index = evt.target.id.match(/[0-9 -()+]+$/)[0];
