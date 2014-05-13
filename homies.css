@@ -210,3 +210,31 @@
 #homies .ui-dialog-titlebar-close:hover {
     opacity: 0.5;
 }
+
+#homies .ui-dialog .ui-dialog-content {
+    opacity: 0;
+}
+#confirm_homie_removal {
+    float:right;
+	font-size: 8pt;
+	padding: 4px 8px;
+    margin: 12px 5px 0px 0px;
+
+}
+
+#cancel_button {
+    float: right;
+    font-size: 8pt;
+	padding: 4px 8px;
+    margin: 12px 3px 0px 0px;
+}
+
+#cancel_button:hover {
+    background: #939393;
+}
+
+#confirm_homie_removal:hover {
+    background: #c90b0b; 
+}
+
+

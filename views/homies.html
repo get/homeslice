@@ -10,6 +10,9 @@
 <div id="remove_homie_popup" title="Remove Homie Popup" style="display: none">
  <p><span class="ui-icon ui-icon-alert" style="float:left; margin:0 7px 20px 0;"></span>
     Are you sure you want to remove <span id="remove_homie_name">this</span> from your homies? You will not be able to add them again.</p>
+        <button class='homie_control cancel_button' id='cancel_button'>Cancel</button>
+
+    <button class='homie_control remove_homie_button' id='confirm_homie_removal'>Remove Homie</button>
 </div>
 
 <div id="message_popup" style="display: none">
@@ -148,24 +151,32 @@ $.getJSON("users.json", function(data) {
             
             $( "#remove_homie_popup" ).dialog({
                 resizable: false,
-                height: 140,
+                height: 120,
                 modal: true,
-                buttons: {
-                    "Remove Homie": function() {
-                        $.cookie("homie"+index, "removed");
-                        $( this ).dialog( "close" );
-                        window.location.href = "?page=homies";
-                    },
-                    Cancel: function() {
-                        $( this ).dialog( "close" );
-                    }
-                }
+                show: { effect: "fadeIn", duration: 200 },
+                hide: { effect: "fadeOut", duration: 200 },
+                open: function(event, ui) { $('.ui-widget-overlay').bind('click', function(){ $("#remove_homie_popup").dialog('close'); }); },
             }).parent()
             .position({
                 my: "center top+" + offset,
                 of: "#controls",
             });
+            
+            $("#confirm_homie_removal").click(function(evt) {
+                console.log("Clicked!!!!");
+                $.cookie("homie"+index, "removed");
+                $( "#remove_homie_popup" ).dialog( "close" );
+                window.location.href = "?page=homies";
+            });
+                
+            $("#cancel_button").click(function(evt) {
+                $("#remove_homie_popup").dialog('close');
+            
         });
+            
+            
+        });
+        
 	}
 });
     
