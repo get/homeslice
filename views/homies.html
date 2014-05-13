@@ -162,7 +162,9 @@ $.getJSON("users.json", function(data) {
                 of: "#controls",
             });
             
-            $("#confirm_homie_removal").click(function(evt) {
+            $("#confirm_homie_removal").unbind();
+            
+            $("#confirm_homie_removal").bind("click", function(evt) {
                 console.log("Clicked!!!!");
                 $.cookie("homie"+index, "removed");
                 $( "#remove_homie_popup" ).dialog( "close" );
